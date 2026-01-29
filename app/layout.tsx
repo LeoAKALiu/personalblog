@@ -5,13 +5,10 @@ import { ThemeProvider } from "@/components/theme-provider";
 import { Navbar } from "@/components/Navbar";
 import { resumeData } from "@/data/resume";
 
-import { ThemeProvider } from "@/components/theme-provider";
-import { Navbar } from "@/components/Navbar";
-import { resumeData } from "@/data/resume";
-
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://liubo.tech"),
   title: {
     default: `${resumeData.personalInfo.name} | Intelligent Construction & AI Expert`,
     template: `%s | ${resumeData.personalInfo.name}`

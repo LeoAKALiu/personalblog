@@ -1,6 +1,6 @@
 import { resumeData } from "@/data/resume";
 import Link from "next/link";
-import { ArrowRight, Brain, Terminal, Activity, ChevronRight } from "lucide-react";
+import { ArrowRight, Brain, Terminal, Activity, ChevronRight, Lightbulb } from "lucide-react";
 import RetroGrid from "@/components/magicui/retro-grid";
 import { TrustBar } from "@/components/TrustBar";
 import { TechRadar } from "@/components/TechRadar";
