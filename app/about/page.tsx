@@ -1,5 +1,5 @@
 import { resumeData } from "@/data/resume";
-import { GraduationCap, Briefcase, Award } from "lucide-react";
+import { GraduationCap, Briefcase, Award, Brain } from "lucide-react";
 
 export default function AboutPage() {
   return (
@@ -9,6 +9,22 @@ export default function AboutPage() {
         <h1 className="text-3xl md:text-4xl font-bold text-foreground">About Me</h1>
         <div className="prose prose-invert max-w-none text-muted-foreground">
           <p className="text-lg leading-relaxed">{resumeData.personalInfo.bio}</p>
+        </div>
+      </section>
+
+      {/* Services / What I Do Section (New) */}
+      <section className="space-y-8">
+        <div className="flex items-center gap-3 mb-6">
+          <Brain className="w-8 h-8 text-primary" />
+          <h2 className="text-2xl font-bold text-foreground">Services & Expertise</h2>
+        </div>
+        <div className="grid md:grid-cols-3 gap-6">
+          {resumeData.services.map((service, idx) => (
+            <div key={idx} className="p-6 bg-card border border-border rounded-xl hover:border-primary/50 transition-colors shadow-sm">
+              <h3 className="text-lg font-bold text-card-foreground mb-3">{service.title}</h3>
+              <p className="text-muted-foreground text-sm leading-relaxed">{service.desc}</p>
+            </div>
+          ))}
         </div>
       </section>
 

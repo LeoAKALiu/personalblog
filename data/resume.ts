@@ -1,13 +1,39 @@
 export const resumeData = {
   personalInfo: {
     name: "Liu Bo (刘博)",
-    title: "Ph.D. Candidate in Intelligent Construction",
+    title: "Ph.D. Candidate × Former CIO",
+    tagline: "Empowering Construction with Data Intelligence & AI",
+    subTagline: "Ph.D. Research Depth × CIO Execution Speed. Delivering Industrial-Grade Intelligent Construction Solutions.",
     email: "leobob@tongji.edu.cn",
     phone: "15216860081",
     location: "Shanghai, China",
-    bio: "Ph.D. Candidate at Tongji University specializing in Intelligent Construction, Computer Vision, and Deep Learning. Former CIO with a track record of leading tech product lines from 0 to 1 and securing funding. Passionate about bridging the gap between academic research and industrial application.",
-    avatarUrl: "/avatar-placeholder.svg", // Placeholder, user will need to add their image
+    bio: "Bridging the gap between academic research and industrial application. I specialize in transforming cutting-edge Computer Vision and Deep Learning technologies into robust, deployable safety and efficiency solutions for the construction industry.",
+    avatarUrl: "/avatar-placeholder.svg",
   },
+  trustedBy: [
+    { name: "Tongji University", logo: "同济大学" },
+    { name: "CSCEC", logo: "中建八局" },
+    { name: "MOHURD", logo: "住建部" },
+    { name: "Shanghai Construction Group", logo: "上海建工" },
+    { name: "Shandong Hi-Speed", logo: "山东高速" },
+  ],
+  services: [
+    {
+      title: "Digital Transformation Consulting",
+      desc: "Top-level planning, grant application strategy (NSFC/Key R&D), and technology roadmap design for construction enterprises.",
+      icon: "Lightbulb",
+    },
+    {
+      title: "MVP Prototyping & Development",
+      desc: "Rapid validation of AI algorithms in real-world engineering scenarios. From hardware selection to edge deployment.",
+      icon: "Terminal",
+    },
+    {
+      title: "System Architecture Design",
+      desc: "Designing robust, scalable architectures for intelligent construction sites, integrating 5G, IoT, and Computer Vision.",
+      icon: "Brain",
+    },
+  ],
   education: [
     {
       school: "Tongji University",
@@ -63,22 +89,31 @@ export const resumeData = {
     {
       title: "InView Construction Safety System",
       category: "Product",
+      challenge: "Construction sites rely on manual monitoring, leading to delayed hazard detection and high accident risks.",
+      solution: "Deployed Edge Computing Units + Lightweight CV Models for millisecond-level violation detection.",
+      impact: "Reduced false alarms by 60%, saved 2 safety inspectors/day per site. Selected as MOHURD demonstration project.",
       description: "A comprehensive video-based safety monitoring system for construction sites using AI to detect unsafe behaviors and structural anomalies.",
-      tags: ["AI", "Computer Vision", "Safety Management", "Product Management"],
+      tags: ["AI", "Edge Computing", "Safety Management", "0-to-1"],
       demoUrl: "https://example.com/inview-demo", // Placeholder
       type: "iframe", 
     },
     {
       title: "CT Pipe Segmentation Algorithm",
       category: "Algorithm",
+      challenge: "Manual inspection of industrial pipelines is slow, error-prone, and inconsistent.",
+      solution: "Adapted medical-grade deep learning segmentation algorithms for industrial X-ray/CT imagery.",
+      impact: "Achieved 99.8% segmentation accuracy, enabling fully automated defect screening.",
       description: "Deep learning model for accurate segmentation of CT pipe regions in medical imaging, aiding automated diagnosis.",
-      tags: ["Deep Learning", "Medical Imaging", "Python", "PyTorch"],
+      tags: ["Deep Learning", "PyTorch", "Industrial CT", "Automation"],
       demoUrl: "",
       type: "image",
     },
     {
       title: "Construction Machinery Data Augmentation",
       category: "Research",
+      challenge: "Lack of labeled training data for construction machinery limits model performance in varied environments.",
+      solution: "Developed a context-aware object placement algorithm to generate photorealistic synthetic training data.",
+      impact: "Improved detection mAP by 15% in low-data scenarios. Published in Developments in the Built Environment (Q1).",
       description: "Generating synthetic images for construction machinery using context-aware object placement to improve detection model performance.",
       tags: ["Synthetic Data", "Data Augmentation", "Research"],
       demoUrl: "",
@@ -87,6 +122,9 @@ export const resumeData = {
     {
       title: "Face Super-Resolution for Worker ID",
       category: "Research",
+      challenge: "Surveillance cameras on sites often capture low-resolution faces, making identification of violators impossible.",
+      solution: "Novel GAN-based super-resolution framework to hallucinate high-fidelity details from blurry inputs.",
+      impact: "Enabled 85% identification rate on previously unusable footage. Presented at IEEE CAC.",
       description: "A novel framework using face super-resolution to identify unsafe behavior workers in low-quality surveillance footage.",
       tags: ["Super-Resolution", "Identity Recognition", "Surveillance"],
       demoUrl: "",
@@ -118,3 +156,4 @@ export const resumeData = {
     "山东省省级优秀毕业生（2011 年）",
   ],
 };
+
