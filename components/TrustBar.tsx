@@ -9,7 +9,7 @@ export function TrustBar() {
     <div className="w-full py-8 border-y border-border/50 bg-muted/20 backdrop-blur-sm">
       <div className="max-w-7xl mx-auto flex flex-col items-center gap-6">
         <p className="text-sm font-semibold text-muted-foreground uppercase tracking-widest">
-          Trusted by Industry Leaders
+          深受行业领军企业信赖
         </p>
         
         <div className="relative flex w-full flex-col items-center justify-center overflow-hidden">
@@ -21,10 +21,6 @@ export function TrustBar() {
                   "mx-8 flex items-center gap-2 grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-300 cursor-default"
                 )}
               >
-                {/* 
-                  Note: In a real implementation, we would use Next.js Image component here with org.logo 
-                  For now, using styled text placeholders as requested by "minimal setup" constraint 
-                */}
                 <span className="text-xl font-bold font-serif text-foreground/80 whitespace-nowrap">
                   {org.logo}
                 </span>

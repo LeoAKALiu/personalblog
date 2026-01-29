@@ -13,11 +13,11 @@ function cn(...inputs: ClassValue[]) {
 }
 
 const navItems = [
-  { name: "Home", href: "/" },
-  { name: "About", href: "/about" },
-  { name: "Projects", href: "/projects" },
-  { name: "Publications", href: "/publications" },
-  { name: "Contact", href: "/contact" },
+  { name: "首页", href: "/" },
+  { name: "关于我", href: "/about" },
+  { name: "解决方案", href: "/projects" },
+  { name: "学术成果", href: "/publications" },
+  { name: "联系合作", href: "/contact" },
 ];
 
 export function Navbar() {
@@ -60,7 +60,7 @@ export function Navbar() {
               onClick={() => setIsOpen(!isOpen)}
               className="inline-flex items-center justify-center p-2 rounded-md text-muted-foreground hover:text-foreground hover:bg-accent focus:outline-none"
             >
-              <span className="sr-only">Open main menu</span>
+              <span className="sr-only">打开菜单</span>
               {isOpen ? <X className="block h-6 w-6" /> : <Menu className="block h-6 w-6" />}
             </button>
           </div>

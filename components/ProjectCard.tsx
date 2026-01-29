@@ -1,13 +1,8 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import { ExternalLink, Maximize2, X, Play } from "lucide-react";
-import { clsx, type ClassValue } from "clsx";
-import { twMerge } from "tailwind-merge";
-
-function cn(...inputs: ClassValue[]) {
-  return twMerge(clsx(inputs));
-}
 
 interface ProjectProps {
   project: {
@@ -112,6 +107,15 @@ export function ProjectCard({ project }: ProjectProps) {
                         title={`${project.title} Demo`}
                         sandbox="allow-scripts allow-same-origin"
                       />
+                    ) : project.type === 'image' && project.demoUrl ? (
+                      <div className="relative w-full h-full">
+                        <Image
+                          src={project.demoUrl}
+                          alt={project.title}
+                          fill
+                          className="object-cover"
+                        />
+                      </div>
                     ) : (
                        <div className="text-center p-8">
                          <div className="w-16 h-16 bg-background rounded-full flex items-center justify-center mx-auto mb-4 border border-border">

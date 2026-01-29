@@ -1,9 +1,13 @@
 import { resumeData } from "@/data/resume";
 import Link from "next/link";
-import { ArrowRight, Brain, Terminal, Activity, ChevronRight, Lightbulb } from "lucide-react";
+import { ArrowRight, ChevronRight } from "lucide-react";
 import RetroGrid from "@/components/magicui/retro-grid";
 import { TrustBar } from "@/components/TrustBar";
-import { TechRadar } from "@/components/TechRadar";
+import { ValueProposition } from "@/components/commercial/ValueProposition";
+import { ClientResults } from "@/components/commercial/ClientResults";
+import { ServicePackages } from "@/components/commercial/ServicePackages";
+import { CapabilitiesMatrix } from "@/components/commercial/CapabilitiesMatrix";
+import { ResourcesHub } from "@/components/commercial/ResourcesHub";
 
 export default function Home() {
   return (
@@ -21,13 +25,13 @@ export default function Home() {
             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
             <span className="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
           </span>
-          Available for Consulting & Research Collaboration
+          接受咨询与产学研合作
         </div>
 
         <h1 className="text-4xl md:text-7xl font-bold tracking-tight text-foreground leading-tight">
-          Empowering Construction with <br />
+          工程数字化 <br />
           <span className="bg-gradient-to-r from-primary to-blue-600 bg-clip-text text-transparent">
-            Data Intelligence & AI
+            智能建造先锋
           </span>
         </h1>
         
@@ -37,17 +41,17 @@ export default function Home() {
 
         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-8">
           <Link
-            href="/projects"
+            href="/contact"
             className="group px-8 py-4 bg-primary hover:bg-primary/90 text-primary-foreground rounded-full font-bold text-lg transition-all flex items-center gap-2 shadow-xl shadow-primary/20 hover:scale-105"
           >
-            Explore Solutions
+            预约咨询
             <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
           </Link>
           <Link
-            href="/contact"
+            href="/projects"
             className="px-8 py-4 bg-background hover:bg-accent text-foreground rounded-full font-bold text-lg transition-all border border-border hover:border-primary/50 shadow-lg flex items-center gap-2"
           >
-            Book a Consultation
+            查看解决方案
             <ChevronRight className="w-4 h-4 opacity-50" />
           </Link>
         </div>
@@ -56,53 +60,21 @@ export default function Home() {
       {/* Section 2: Trust Bar */}
       <TrustBar />
 
-      {/* Section 3: Value Proposition (Tech Radar + Services) */}
-      <section className="relative z-10 w-full py-24 px-4 bg-gradient-to-b from-transparent to-muted/20">
-        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-          
-          {/* Left: Text Content */}
-          <div className="space-y-8 order-2 lg:order-1">
-            <h2 className="text-3xl md:text-5xl font-bold text-foreground">
-              Bridging the Gap Between <br/>
-              <span className="text-primary">Research & Reality</span>
-            </h2>
-            <p className="text-lg text-muted-foreground leading-relaxed">
-              Most AI solutions fail in the harsh environment of construction sites. 
-              My dual background as a <strong>Ph.D. Researcher</strong> and <strong>Enterprise CIO</strong> ensures solutions are not just theoretically sound, but battle-tested for industrial deployment.
-            </p>
-            
-            <div className="grid gap-6">
-              {resumeData.services.map((service, idx) => {
-                 const icons = { Lightbulb, Terminal, Brain };
-                 // @ts-ignore
-                 const Icon = icons[service.icon] || Activity;
-                 
-                 return (
-                   <div key={idx} className="flex gap-4 p-4 rounded-xl bg-card border border-border hover:border-primary/50 transition-colors">
-                     <div className="mt-1">
-                       <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center text-primary">
-                         <Icon className="w-5 h-5" />
-                       </div>
-                     </div>
-                     <div>
-                       <h3 className="font-bold text-foreground text-lg">{service.title}</h3>
-                       <p className="text-muted-foreground text-sm leading-relaxed mt-1">{service.desc}</p>
-                     </div>
-                   </div>
-                 )
-              })}
-            </div>
-          </div>
+      {/* Section 3: Client Results (Trust Endorsement) */}
+      <ClientResults />
 
-          {/* Right: Visualization */}
-          <div className="order-1 lg:order-2 flex justify-center lg:justify-end relative">
-             <div className="absolute inset-0 bg-primary/20 blur-[100px] rounded-full opacity-30"></div>
-             <TechRadar />
-          </div>
+      {/* Section 4: Value Proposition Canvas */}
+      <ValueProposition />
 
-        </div>
-      </section>
+      {/* Section 5: Capabilities Matrix (Tech Stack) */}
+      <CapabilitiesMatrix />
+
+      {/* Section 6: Service Packages (Engagement Models) */}
+      <ServicePackages />
+
+      {/* Section 7: Resources Hub (Lead Magnet) */}
+      <ResourcesHub />
+
     </div>
   );
 }
-

@@ -1,133 +1,254 @@
 export const resumeData = {
   personalInfo: {
     name: "Liu Bo (刘博)",
-    title: "Ph.D. Candidate × Former CIO",
-    tagline: "Empowering Construction with Data Intelligence & AI",
-    subTagline: "Ph.D. Research Depth × CIO Execution Speed. Delivering Industrial-Grade Intelligent Construction Solutions.",
+    title: "工程数字化与智能建造专家",
+    tagline: "用 AI 与实时数据重塑基础设施建设",
+    subTagline: "连接学术研究与产业落地。打造经得起实战检验的智能建造解决方案。",
     email: "leobob@tongji.edu.cn",
     phone: "15216860081",
-    location: "Shanghai, China",
-    bio: "Bridging the gap between academic research and industrial application. I specialize in transforming cutting-edge Computer Vision and Deep Learning technologies into robust, deployable safety and efficiency solutions for the construction industry.",
-    avatarUrl: "/avatar-placeholder.svg",
+    location: "中国上海",
+    bio: "致力于填补学术研究与工业应用之间的鸿沟。我专注于将最前沿的计算机视觉与深度学习技术，转化为建筑行业真正可落地、更安全、更高效的解决方案。",
+    avatarUrl: "/assets/images/avatar.jpg",
   },
   trustedBy: [
-    { name: "Tongji University", logo: "同济大学" },
-    { name: "CSCEC", logo: "中建八局" },
-    { name: "MOHURD", logo: "住建部" },
-    { name: "Shanghai Construction Group", logo: "上海建工" },
-    { name: "Shandong Hi-Speed", logo: "山东高速" },
+    { name: "同济大学", logo: "同济大学" },
+    { name: "中建八局", logo: "中建八局" },
+    { name: "住建部", logo: "住建部" },
+    { name: "上海建工", logo: "上海建工" },
+    { name: "山东高速", logo: "山东高速" },
+  ],
+  valueProposition: [
+    {
+      pain: "现场巡检效率低下",
+      solution: "AI 视觉自动化监控",
+      roi: "节省 70% 人力成本",
+      details: "全天候自动视觉分析替代人工巡逻，实现降本增效。"
+    },
+    {
+      pain: "安全隐患与事故频发",
+      solution: "实时安全预警系统",
+      roi: "误报率降低 60%",
+      details: "毫秒级隐患识别，将事故扼杀在发生之前。"
+    },
+    {
+      pain: "数据孤岛与价值流失",
+      solution: "工程大模型与大数据分析",
+      roi: "决策速度提升 5 倍",
+      details: "激活历史工程数据价值，为管理层提供预测性洞察。"
+    }
+  ],
+  clientResults: [
+    {
+      client: "中国建筑 (CSCEC)",
+      logo: "中建八局",
+      stat: "3:1 投资回报率",
+      description: "在试点智慧工地项目中实现了 300% 的投资回报。"
+    },
+    {
+      client: "上海建工 (SCG)",
+      logo: "上海建工",
+      stat: "效率提升 35%",
+      description: "施工进度追踪效率显著提升，管理颗粒度更精细。"
+    },
+    {
+      client: "住建部试点项目",
+      logo: "住建部",
+      stat: "国家级示范",
+      description: "入选住房和城乡建设部智能建造典型案例。"
+    },
+    {
+      client: "同济大学",
+      logo: "同济大学",
+      stat: "产学研转化",
+      description: "成功将 3 项核心研究专利转化为商业化产品。"
+    }
   ],
   services: [
     {
-      title: "Digital Transformation Consulting",
-      desc: "Top-level planning, grant application strategy (NSFC/Key R&D), and technology roadmap design for construction enterprises.",
+      title: "数字化转型咨询",
+      desc: "建筑企业顶层设计、国家级课题（自科/重点研发）申报策略及技术路线图规划。",
       icon: "Lightbulb",
     },
     {
-      title: "MVP Prototyping & Development",
-      desc: "Rapid validation of AI algorithms in real-world engineering scenarios. From hardware selection to edge deployment.",
+      title: "MVP 原型开发与验证",
+      desc: "AI 算法在真实工程场景中的快速验证。提供从硬件选型到边缘端部署的全栈服务。",
       icon: "Terminal",
     },
     {
-      title: "System Architecture Design",
-      desc: "Designing robust, scalable architectures for intelligent construction sites, integrating 5G, IoT, and Computer Vision.",
+      title: "系统架构设计",
+      desc: "设计高可用、可扩展的智慧工地系统架构，深度集成 5G、IoT 与计算机视觉技术。",
       icon: "Brain",
     },
   ],
+  servicePackages: [
+    {
+      title: "高管战略汇报",
+      price: "¥50,000 / 次",
+      features: [
+        "1 小时深度战略拆解",
+        "企业数字化转型路线图",
+        "AI 技术可行性评估",
+        "高管问答与决策支持"
+      ],
+      target: "面向企业 C-Level 高管"
+    },
+    {
+      title: "技术架构设计",
+      price: "¥100,000 / 项目",
+      features: [
+        "完整的技术架构方案",
+        "软硬件选型建议",
+        "系统集成实施路径",
+        "技术风险评估报告"
+      ],
+      target: "面向 CTO 与技术负责人"
+    },
+    {
+      title: "技术原型 (MVP) 交付",
+      price: "¥200,000 / 套",
+      features: [
+        "2 周极速交付",
+        "定制化算法调优",
+        "边缘端部署调试",
+        "现场试点验证"
+      ],
+      target: "面向创新业务团队"
+    }
+  ],
+  capabilitiesMatrix: [
+    {
+      scene: "安全监控",
+      tech: "计算机视觉 + 边缘计算",
+      value: "风险降低 70%",
+      icon: "Shield"
+    },
+    {
+      scene: "进度追踪",
+      tech: "SLAM + 三维重建",
+      value: "效率提升 40%",
+      icon: "Activity"
+    },
+    {
+      scene: "质量检测",
+      tech: "大模型 (LLM) + 视觉语言模型",
+      value: "检测成本降低 50%",
+      icon: "CheckCircle"
+    }
+  ],
+  resources: [
+    {
+      title: "2026 智能建造发展趋势白皮书",
+      type: "PDF",
+      url: "/assets/docs/2026-trends.pdf",
+      icon: "FileText"
+    },
+    {
+      title: "工程边缘计算应用实战",
+      type: "Video",
+      url: "/assets/videos/edge-computing-demo.mp4",
+      icon: "Video"
+    },
+    {
+      title: "数字化转型 ROI 计算器",
+      type: "Tool",
+      url: "/assets/tools/roi-calculator.xlsx",
+      icon: "Calculator"
+    }
+  ],
   education: [
     {
-      school: "Tongji University",
-      degree: "Ph.D. in Intelligent Construction (Civil Engineering)",
-      dates: "2019.9 - 2025.3 (Expected)",
-      details: "Supervisor: Prof. Lu Yujie. Focus on Computer Vision in Construction.",
+      school: "同济大学",
+      degree: "土木工程（智能建造方向） 博士",
+      dates: "2019.9 - 2025.3 (预计)",
+      details: "导师：卢昱杰教授。研究方向：工程计算机视觉。",
     },
     {
-      school: "Shandong Jianzhu University",
-      degree: "Master in Bridge & Tunnel Engineering",
+      school: "山东建筑大学",
+      degree: "桥梁与隧道工程 硕士",
       dates: "2011.9 - 2014.6",
-      details: "Supervisor: Assoc. Prof. Fan Wei.",
+      details: "导师：范伟副教授。",
     },
     {
-      school: "Shandong Jianzhu University",
-      degree: "Bachelor in Civil Engineering",
+      school: "山东建筑大学",
+      degree: "土木工程 学士",
       dates: "2007.9 - 2011.6",
     },
   ],
   experience: [
     {
-      company: "ChuangLe (Shanghai) Information Technology Co., Ltd.",
-      role: "CIO (Chief Information Officer)",
+      company: "创乐（上海）信息技术有限公司",
+      role: "CIO (首席信息官)",
       dates: "2020.7 - 2024.7",
       description: [
-        "Led the 'InView' construction video structural analysis product line from inception (0 to 1).",
-        "Directed the implementation of 'Construction Holistic Safety System' and 'Working Face Progress Recognition System'.",
-        "Responsible for strategic planning of intelligent construction and adjustment.",
-        "Participated in and completed Angel and Pre-A round financing.",
-        "Managed IP portfolio and application for High-Tech Enterprise status.",
+        "主导 'InView' 施工视频结构化分析产品线从 0 到 1 的研发与落地。",
+        "负责 '施工全方位安全系统' 和 '作业面进度识别系统' 的实施。",
+        "负责智能建造战略规划与业务调整。",
+        "参与并完成天使轮及 Pre-A 轮融资。",
+        "管理知识产权组合并负责高新技术企业申报。",
       ],
     },
     {
-      company: "Shanghai Haohua Technology Co., Ltd.",
-      role: "Algorithm Engineer / Implementation Engineer",
+      company: "上海好华科技有限公司",
+      role: "算法工程师 / 实施工程师",
       dates: "2018.3 - 2019.8",
       description: [
-        "Developed and tuned deep learning algorithms for CT pipe region segmentation.",
-        "Formulated software/hardware solutions for production environments and managed optimization/operations.",
-        "Assisted in AI medical imaging product requirements and documentation.",
+        "开发并优化用于 CT 管道区域分割的深度学习算法。",
+        "制定生产环境软硬件解决方案并负责优化与运维。",
+        "协助撰写 AI 医疗影像产品需求与文档。",
       ],
     },
     {
-      company: "Shandong Academy of Building Research",
-      role: "Foundation Testing Supervisor",
+      company: "山东省建筑科学研究院",
+      role: "基桩检测主管",
       dates: "2014.7 - 2017.4",
       description: [
-        "Responsible for pile foundation testing and appraisal services in Linyi, Jining, and Heze regions.",
+        "负责临沂、济宁、菏泽地区的基桩检测与鉴定服务。",
       ],
     },
   ],
   projects: [
     {
-      title: "InView Construction Safety System",
-      category: "Product",
-      challenge: "Construction sites rely on manual monitoring, leading to delayed hazard detection and high accident risks.",
-      solution: "Deployed Edge Computing Units + Lightweight CV Models for millisecond-level violation detection.",
-      impact: "Reduced false alarms by 60%, saved 2 safety inspectors/day per site. Selected as MOHURD demonstration project.",
-      description: "A comprehensive video-based safety monitoring system for construction sites using AI to detect unsafe behaviors and structural anomalies.",
-      tags: ["AI", "Edge Computing", "Safety Management", "0-to-1"],
-      demoUrl: "https://example.com/inview-demo", // Placeholder
+      title: "InView 施工安全监控系统",
+      category: "产品",
+      challenge: "传统人工监控滞后严重（24小时+），且因人员疲劳导致 80% 的安全隐患被遗漏。",
+      solution: "部署边缘计算单元 + 轻量化 CV 模型，实现毫秒级违规行为检测。",
+      impact: "误报率降低 60%，每个工地每天节省 2 名安全巡检员。试点阶段实现零事故。",
+      description: "一套基于视频的施工现场综合安全监控系统，利用 AI 实时检测不安全行为与结构异常。",
+      tags: ["AI", "边缘计算", "安全管理", "0-to-1"],
+      demoUrl: "/assets/videos/inview-demo.mp4",
       type: "iframe", 
     },
     {
-      title: "CT Pipe Segmentation Algorithm",
-      category: "Algorithm",
-      challenge: "Manual inspection of industrial pipelines is slow, error-prone, and inconsistent.",
-      solution: "Adapted medical-grade deep learning segmentation algorithms for industrial X-ray/CT imagery.",
-      impact: "Achieved 99.8% segmentation accuracy, enabling fully automated defect screening.",
-      description: "Deep learning model for accurate segmentation of CT pipe regions in medical imaging, aiding automated diagnosis.",
-      tags: ["Deep Learning", "PyTorch", "Industrial CT", "Automation"],
-      demoUrl: "",
+      title: "CT 管道分割算法",
+      category: "算法",
+      challenge: "工业管道的人工检测速度慢、易出错，且标准难以统一。",
+      solution: "将医疗级深度学习分割算法迁移至工业 X 光/CT 图像分析中。",
+      impact: "实现了 99.8% 的分割准确率，使全自动缺陷筛查成为可能。",
+      description: "用于医疗影像中 CT 管道区域精确分割的深度学习模型，辅助自动化诊断。",
+      tags: ["Deep Learning", "PyTorch", "工业 CT", "自动化"],
+      demoUrl: "/assets/images/ct-segmentation.jpg",
       type: "image",
     },
     {
       title: "Construction Machinery Data Augmentation",
-      category: "Research",
-      challenge: "Lack of labeled training data for construction machinery limits model performance in varied environments.",
-      solution: "Developed a context-aware object placement algorithm to generate photorealistic synthetic training data.",
-      impact: "Improved detection mAP by 15% in low-data scenarios. Published in Developments in the Built Environment (Q1).",
+      category: "科研",
+      challenge: "施工机械标注数据极度匮乏，限制了模型在复杂多变环境下的性能。",
+      solution: "开发了一种上下文感知的物体放置算法，用于生成逼真的合成训练数据。",
+      impact: "在低数据场景下将检测 mAP 提升了 15%。发表于 Developments in the Built Environment (Q1)。",
       description: "Generating synthetic images for construction machinery using context-aware object placement to improve detection model performance.",
       tags: ["Synthetic Data", "Data Augmentation", "Research"],
-      demoUrl: "",
+      demoUrl: "/assets/images/data-augmentation.jpg",
       type: "image",
     },
     {
       title: "Face Super-Resolution for Worker ID",
-      category: "Research",
-      challenge: "Surveillance cameras on sites often capture low-resolution faces, making identification of violators impossible.",
-      solution: "Novel GAN-based super-resolution framework to hallucinate high-fidelity details from blurry inputs.",
-      impact: "Enabled 85% identification rate on previously unusable footage. Presented at IEEE CAC.",
+      category: "科研",
+      challenge: "工地监控摄像头往往捕捉到低分辨率人脸，导致违规人员身份难以确认。",
+      solution: "提出了一种基于 GAN 的超分辨率框架，从模糊输入中恢复高保真细节。",
+      impact: "将低质量素材的身份识别率提升至 85%。成果发表于 IEEE CAC。",
       description: "A novel framework using face super-resolution to identify unsafe behavior workers in low-quality surveillance footage.",
       tags: ["Super-Resolution", "Identity Recognition", "Surveillance"],
-      demoUrl: "",
+      demoUrl: "/assets/images/super-resolution.jpg",
       type: "image",
     },
   ],
@@ -156,4 +277,3 @@ export const resumeData = {
     "山东省省级优秀毕业生（2011 年）",
   ],
 };
-

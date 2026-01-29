@@ -1,16 +1,13 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import { Navbar } from "@/components/Navbar";
 import { resumeData } from "@/data/resume";
 
-const inter = Inter({ subsets: ["latin"] });
-
 export const metadata: Metadata = {
   metadataBase: new URL("https://liubo.tech"),
   title: {
-    default: `${resumeData.personalInfo.name} | Intelligent Construction & AI Expert`,
+    default: `${resumeData.personalInfo.name} | Digital Construction Intelligence Pioneer`,
     template: `%s | ${resumeData.personalInfo.name}`
   },
   description: resumeData.personalInfo.bio,
@@ -24,10 +21,12 @@ export const metadata: Metadata = {
     "Tongji University", 
     "CIO",
     "Smart Site",
+    "Engineering Digital Transformation",
     "智能建造",
     "机器视觉",
     "智慧工地",
-    "数字化转型"
+    "数字化转型",
+    "工程数字化"
   ],
   authors: [{ name: resumeData.personalInfo.name }],
   creator: resumeData.personalInfo.name,
@@ -73,7 +72,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${inter.className} bg-background text-foreground antialiased min-h-screen flex flex-col`}>
+      <body className={`font-sans bg-background text-foreground antialiased min-h-screen flex flex-col`}>
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
