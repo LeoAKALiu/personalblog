@@ -1,14 +1,72 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import { Navbar } from "@/components/Navbar";
 import { ThemeProvider } from "@/components/theme-provider";
+import { Navbar } from "@/components/Navbar";
+import { resumeData } from "@/data/resume";
+
+import { ThemeProvider } from "@/components/theme-provider";
+import { Navbar } from "@/components/Navbar";
+import { resumeData } from "@/data/resume";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Liu Bo | Intelligent Construction & AI Expert",
-  description: "Portfolio of Liu Bo, Ph.D. Candidate at Tongji University and former CIO.",
+  title: {
+    default: `${resumeData.personalInfo.name} | Intelligent Construction & AI Expert`,
+    template: `%s | ${resumeData.personalInfo.name}`
+  },
+  description: resumeData.personalInfo.bio,
+  keywords: [
+    "Intelligent Construction", 
+    "Computer Vision", 
+    "AI in Construction", 
+    "Digital Twin", 
+    "Construction Safety", 
+    "Liu Bo", 
+    "Tongji University", 
+    "CIO",
+    "Smart Site",
+    "智能建造",
+    "机器视觉",
+    "智慧工地",
+    "数字化转型"
+  ],
+  authors: [{ name: resumeData.personalInfo.name }],
+  creator: resumeData.personalInfo.name,
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    url: "https://liubo.tech",
+    title: `${resumeData.personalInfo.name} - ${resumeData.personalInfo.tagline}`,
+    description: resumeData.personalInfo.subTagline,
+    siteName: `${resumeData.personalInfo.name} Portfolio`,
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: `${resumeData.personalInfo.name} - Intelligent Construction Expert`,
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: `${resumeData.personalInfo.name} - ${resumeData.personalInfo.tagline}`,
+    description: resumeData.personalInfo.subTagline,
+    images: ["/og-image.png"],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
 };
 
 export default function RootLayout({
