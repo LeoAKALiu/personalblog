@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(dig:*)",
+      "Bash(grep:*)",
+      "Bash(npm run build:*)",
+      "Bash(git -C /Users/leo/projects/PersonalBlog/portfolio log --oneline -15)",
+      "Bash(git -C /Users/leo/projects/PersonalBlog/portfolio remote -v)"
+    ]
+  }
+}

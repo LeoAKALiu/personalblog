@@ -1,0 +1,21 @@
+services:
+  web:
+    build: .
+    container_name: portfolio-web
+    restart: always
+    environment:
+      - NODE_ENV=production
+    deploy:
+      resources:
+        limits:
+          memory: 1G
+    ports:
+      - "3000:3000"
+    expose:
+      - "3000"
+    networks:
+      - nginx-proxy-manage_default
+
+networks:
+  nginx-proxy-manage_default:
+    external: true

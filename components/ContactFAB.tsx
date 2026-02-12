@@ -1,0 +1,112 @@
+"use client";
+
+import { useState, useRef, useEffect } from "react";
+import { MessageCircle, X, Mail, Phone, User } from "lucide-react";
+import { resumeData } from "@/data/resume";
+
+export function ContactFAB() {
+  const [isOpen, setIsOpen] = useState(false);
+  const panelRef = useRef<HTMLDivElement>(null);
+  const buttonRef = useRef<HTMLButtonElement>(null);
+
+  // Close on outside click
+  useEffect(() => {
+    if (!isOpen) return;
+    function handleClick(e: MouseEvent) {
+      if (
+        panelRef.current &&
+        !panelRef.current.contains(e.target as Node) &&
+        buttonRef.current &&
+        !buttonRef.current.contains(e.target as Node)
+      ) {
+        setIsOpen(false);
+      }
+    }
+    document.addEventListener("mousedown", handleClick);
+    return () => document.removeEventListener("mousedown", handleClick);
+  }, [isOpen]);
+
+  return (
+    <div className="fixed bottom-6 right-6 z-50 flex flex-col items-end gap-3">
+      {/* Contact Card */}
+      {isOpen && (
+        <div
+          ref={panelRef}
+          className="w-72 bg-card border border-border rounded-2xl shadow-2xl p-5 space-y-4 animate-in fade-in slide-in-from-bottom-2 duration-200"
+        >
+          <div className="flex items-center justify-between">
+            <h3 className="text-base font-bold text-card-foreground">联系方式</h3>
+            <button
+              onClick={() => setIsOpen(false)}
+              className="p-1 text-muted-foreground hover:text-foreground rounded-full hover:bg-muted transition-colors"
+              aria-label="关闭"
+            >
+              <X className="w-4 h-4" />
+            </button>
+          </div>
+
+          <div className="space-y-3">
+            {/* Email */}
+            <a
+              href={`mailto:${resumeData.personalInfo.email}`}
+              className="flex items-center gap-3 p-2.5 rounded-lg hover:bg-muted transition-colors group"
+            >
+              <div className="w-9 h-9 rounded-full bg-primary/10 flex items-center justify-center text-primary shrink-0">
+                <Mail className="w-4 h-4" />
+              </div>
+              <div className="min-w-0">
+                <p className="text-xs text-muted-foreground">邮箱</p>
+                <p className="text-sm text-foreground truncate group-hover:text-primary transition-colors">
+                  {resumeData.personalInfo.email}
+                </p>
+              </div>
+            </a>
+
+            {/* Phone */}
+            <a
+              href={`tel:${resumeData.personalInfo.phone}`}
+              className="flex items-center gap-3 p-2.5 rounded-lg hover:bg-muted transition-colors group"
+            >
+              <div className="w-9 h-9 rounded-full bg-primary/10 flex items-center justify-center text-primary shrink-0">
+                <Phone className="w-4 h-4" />
+              </div>
+              <div className="min-w-0">
+                <p className="text-xs text-muted-foreground">电话</p>
+                <p className="text-sm text-foreground group-hover:text-primary transition-colors">
+                  {resumeData.personalInfo.phone}
+                </p>
+              </div>
+            </a>
+
+            {/* WeChat (same as phone) */}
+            <div className="flex items-center gap-3 p-2.5 rounded-lg">
+              <div className="w-9 h-9 rounded-full bg-green-500/10 flex items-center justify-center text-green-600 shrink-0">
+                <User className="w-4 h-4" />
+              </div>
+              <div className="min-w-0">
+                <p className="text-xs text-muted-foreground">微信</p>
+                <p className="text-sm text-foreground">
+                  {resumeData.personalInfo.phone}
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* FAB Button */}
+      <button
+        ref={buttonRef}
+        onClick={() => setIsOpen((prev) => !prev)}
+        className="w-14 h-14 rounded-full bg-primary text-primary-foreground shadow-lg hover:bg-primary/90 transition-all hover:scale-105 flex items-center justify-center"
+        aria-label="联系方式"
+      >
+        {isOpen ? (
+          <X className="w-6 h-6" />
+        ) : (
+          <MessageCircle className="w-6 h-6" />
+        )}
+      </button>
+    </div>
+  );
+}
