@@ -1,3 +1,21 @@
+/** Structured publication data for CardList component */
+export interface Publication {
+  title: string;
+  authors: string;
+  venue: string;
+  year: string;
+  metrics: string;
+  link?: string;
+}
+
+/** Structured patent data for CardList component */
+export interface Patent {
+  title: string;
+  inventors: string;
+  number: string;
+  year: string;
+}
+
 export const resumeData = {
   personalInfo: {
     name: "Liu Bo (刘博)",
@@ -276,4 +294,82 @@ export const resumeData = {
     "广联达智能建造奖学金（前 1%, 2021 年）",
     "山东省省级优秀毕业生（2011 年）",
   ],
+  /** Structured publications for CardList component */
+  structuredPublications: [
+    {
+      title: "Collaboration networks and bidding competitiveness in megaprojects",
+      authors: "Lu Yujie, Liu Bo, Li Yongkui",
+      venue: "Journal of Management in Engineering",
+      year: "2021",
+      metrics: "SCI, JCR Q1, IF=6.415",
+    },
+    {
+      title: "A Novel Face Super-Resolution-Based Framework for Identity Recognition of Unsafe Behavior Workers",
+      authors: "Liu Bo, Lu Yujie, Wang Rui, Wei Wei",
+      venue: "2020 Chinese Automation Congress (CAC), IEEE",
+      year: "2020",
+      metrics: "EI",
+    },
+    {
+      title: "Generating Synthetic Images for Construction Machinery Data Augmentation Utilizing Context-Aware Object Placement",
+      authors: "Yujie Lu, Bo Liu, Wei Wei, Bo Xiao, Zhangding Liu, Wensheng Li",
+      venue: "Developments in the Built Environment",
+      year: "2025",
+      metrics: "SCI, JCR Q1, IF=6.5",
+    },
+    {
+      title: "Integrated vision-based automated progress monitoring of indoor construction using Mask R-CNN and BIM",
+      authors: "Wei Wei, Yujie Lu, Tao Zhong, Peixian Li, Liu Bo",
+      venue: "Automation in Construction",
+      year: "2022",
+      metrics: "SCI, JCR Q1, IF=10.517",
+    },
+    {
+      title: "Non-intrusive comfort sensing: Detecting age and gender from infrared images for personal thermal comfort",
+      authors: "Li Peixian, Pengfei Dai, Daqian Cao, Liu Bo, Yujie Lu",
+      venue: "Building and Environment",
+      year: "2022",
+      metrics: "SCI, JCR Q1, IF=7.093",
+    },
+    {
+      title: "Photovoltaic panel waste assessment and embodied material flows in China, 2000-2050",
+      authors: "Song G., Lu Y., Liu B., Duan H., Feng H., Liu G.",
+      venue: "Journal of Environmental Management",
+      year: "2023",
+      metrics: "SCI, JCR Q1, IF=8.7",
+    },
+  ] satisfies Publication[],
+  /** Structured patents for CardList component */
+  structuredPatents: [
+    {
+      title: "一种工程机械图像数据集生成方法与电子设备",
+      inventors: "刘博, 刘金杉, 卢昱杰, 魏伟, 林奇泓, 赵轩",
+      number: "CN115294307A",
+      year: "2022",
+    },
+    {
+      title: "一种基于姿态识别的机械单体施工作业效率检测方法和系统",
+      inventors: "刘博, 卢昱杰, 张自然, 韩进",
+      number: "CN114418310A",
+      year: "2022",
+    },
+    {
+      title: "一种用于施工安全管理的可移动边缘计算摄像头系统和装置",
+      inventors: "刘博, 卢昱杰, 张自然, 范森森, 李东永, 李易航",
+      number: "CN114422750A",
+      year: "2022",
+    },
+    {
+      title: "基于计算机视觉的工作效率评价方法、系统、设备及介质",
+      inventors: "刘金杉, 卢昱杰, 王瑞, 刘博, 张自然",
+      number: "CN112819306A",
+      year: "2021",
+    },
+    {
+      title: "一种爬壁机器人跌落保护装置及其控制方法",
+      inventors: "卢昱杰, 王龙, 秦韬, 刘博, 赵宪忠",
+      number: "CN113427521B",
+      year: "2022",
+    },
+  ] satisfies Patent[],
 };

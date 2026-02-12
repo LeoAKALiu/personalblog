@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
-import { Navbar } from "@/components/Navbar";
+import { Header } from "@/components/Header";
+import { Footer } from "@/components/Footer";
 import { ContactFAB } from "@/components/ContactFAB";
 import { resumeData } from "@/data/resume";
 
@@ -85,26 +86,12 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <Navbar />
+          <Header />
           <main className="flex-grow pt-16">
             {children}
           </main>
           <ContactFAB />
-          <footer className="bg-muted/50 border-t border-border py-8 mt-auto safe-bottom">
-            <div className="max-w-7xl mx-auto px-4 text-center text-muted-foreground space-y-2">
-              <p>&copy; {new Date().getFullYear()} Liu Bo. All rights reserved.</p>
-              <p className="text-sm">
-                <a
-                  href="https://beian.miit.gov.cn/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="hover:text-foreground transition-colors"
-                >
-                  沪ICP备2026005282号-1
-                </a>
-              </p>
-            </div>
-          </footer>
+          <Footer />
         </ThemeProvider>
       </body>
     </html>

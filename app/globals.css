@@ -109,6 +109,28 @@
 
 }
 
+/* Smooth scroll for anchor navigation */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Scroll margin so sections aren't hidden behind fixed header */
+[id] {
+  scroll-margin-top: 5rem;
+}
+
+/* Fade-in animation for scroll reveal */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(1rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 /* Mobile optimizations */
 html {
   -webkit-text-size-adjust: 100%;
