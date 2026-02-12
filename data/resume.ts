@@ -5,8 +5,12 @@ export interface Publication {
   venue: string;
   year: string;
   metrics: string;
+  /** PDF URL (e.g. OSS) for 查看全文 */
   link?: string;
 }
+
+/** Patent type for tag display */
+export type PatentType = "发明专利" | "实用新型专利";
 
 /** Structured patent data for CardList component */
 export interface Patent {
@@ -14,6 +18,9 @@ export interface Patent {
   inventors: string;
   number: string;
   year: string;
+  patentType: PatentType;
+  /** PDF URL (e.g. OSS) for 查看全文 */
+  link?: string;
 }
 
 export const resumeData = {
@@ -22,8 +29,8 @@ export const resumeData = {
     title: "工程数字化与智能建造专家",
     tagline: "用 AI 与实时数据重塑基础设施建设",
     subTagline: "连接学术研究与产业落地。打造经得起实战检验的智能建造解决方案。",
-    email: "leobob@tongji.edu.cn",
-    phone: "15216860081",
+    email: "liubo@sdjzu.edu.cn",
+    phone: "18560007887",
     location: "中国上海",
     bio: "致力于填补学术研究与工业应用之间的鸿沟。我专注于将最前沿的计算机视觉与深度学习技术，转化为建筑行业真正可落地、更安全、更高效的解决方案。",
     avatarUrl: "/assets/images/avatar.jpg",
@@ -177,7 +184,7 @@ export const resumeData = {
     {
       school: "同济大学",
       degree: "土木工程（智能建造方向） 博士",
-      dates: "2019.9 - 2025.3 (预计)",
+      dates: "2019.9 - 2025.3",
       details: "导师：卢昱杰教授。研究方向：工程计算机视觉。",
     },
     {
@@ -206,7 +213,7 @@ export const resumeData = {
       ],
     },
     {
-      company: "上海好华科技有限公司",
+      company: "上海浩桦科技有限公司",
       role: "算法工程师 / 实施工程师",
       dates: "2018.3 - 2019.8",
       description: [
@@ -346,30 +353,35 @@ export const resumeData = {
       inventors: "刘博, 刘金杉, 卢昱杰, 魏伟, 林奇泓, 赵轩",
       number: "CN115294307A",
       year: "2022",
+      patentType: "发明专利",
     },
     {
       title: "一种基于姿态识别的机械单体施工作业效率检测方法和系统",
       inventors: "刘博, 卢昱杰, 张自然, 韩进",
       number: "CN114418310A",
       year: "2022",
+      patentType: "发明专利",
     },
     {
       title: "一种用于施工安全管理的可移动边缘计算摄像头系统和装置",
       inventors: "刘博, 卢昱杰, 张自然, 范森森, 李东永, 李易航",
       number: "CN114422750A",
       year: "2022",
+      patentType: "发明专利",
     },
     {
       title: "基于计算机视觉的工作效率评价方法、系统、设备及介质",
       inventors: "刘金杉, 卢昱杰, 王瑞, 刘博, 张自然",
       number: "CN112819306A",
       year: "2021",
+      patentType: "发明专利",
     },
     {
       title: "一种爬壁机器人跌落保护装置及其控制方法",
       inventors: "卢昱杰, 王龙, 秦韬, 刘博, 赵宪忠",
       number: "CN113427521B",
       year: "2022",
+      patentType: "实用新型专利",
     },
   ] satisfies Patent[],
 };

@@ -109,14 +109,28 @@
 
 }
 
-/* Smooth scroll for anchor navigation */
+/* Base HTML optimizations + smooth scroll */
 html {
   scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: transparent;
+  /* NOTE: overflow-x: hidden must NOT be set on <html> — it propagates to
+     the viewport per CSS spec and breaks wheel/trackpad scrolling.
+     Use overflow-x: hidden on <body> only (see below). */
 }
 
-/* Scroll margin so sections aren't hidden behind fixed header */
+/*
+ * Scroll margin so sections aren't hidden behind fixed header.
+ * Mobile: header is 64px (primary nav only) -> 5rem (80px) with buffer.
+ * Desktop (md+): header can be ~120px (primary nav + section nav) -> 8rem (128px).
+ */
 [id] {
   scroll-margin-top: 5rem;
+}
+@media (min-width: 768px) {
+  [id] {
+    scroll-margin-top: 8rem;
+  }
 }
 
 /* Fade-in animation for scroll reveal */
@@ -129,13 +143,6 @@ html {
     opacity: 1;
     transform: translateY(0);
   }
-}
-
-/* Mobile optimizations */
-html {
-  -webkit-text-size-adjust: 100%;
-  -webkit-tap-highlight-color: transparent;
-  overflow-x: hidden;
 }
 
 body {

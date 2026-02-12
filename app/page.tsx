@@ -37,6 +37,7 @@ function publicationsToCardItems(): CardItem[] {
     summary: pub.authors,
     venue: pub.venue,
     metrics: pub.metrics,
+    link: pub.link,
   }));
 }
 
@@ -46,9 +47,21 @@ function patentsToCardItems(): CardItem[] {
     title: pat.title,
     year: pat.year,
     type: "专利" as const,
+    patentType: pat.patentType,
     summary: pat.inventors,
     number: pat.number,
+    link: pat.link,
   }));
+}
+
+/** Combined academic output (papers + patents) sorted by year descending */
+function combinedAcademicItems(): CardItem[] {
+  const items = [
+    ...publicationsToCardItems(),
+    ...patentsToCardItems(),
+  ];
+  items.sort((a, b) => Number(b.year) - Number(a.year));
+  return items;
 }
 
 /** Expandable experience item - shows first 2 items, rest toggleable */
@@ -276,22 +289,18 @@ export default function Home(): React.ReactElement {
         </section>
       </FadeInOnScroll>
 
-      {/* ─── Section 5: Academic Output (CardList) ─── */}
+      {/* ─── Section 5: Academic Output (论文与专利合并，可滑动列表) ─── */}
       <FadeInOnScroll>
         <section
           id="academic"
           className="w-full py-12 md:py-20 px-4 border-t border-border/50"
         >
-          <div className="max-w-4xl mx-auto space-y-12 md:space-y-16">
+          <div className="max-w-4xl mx-auto">
             <CardList
-              items={publicationsToCardItems()}
+              items={combinedAcademicItems()}
               icon={<FileText className="w-7 h-7 text-primary" />}
-              sectionTitle="代表性论文"
-            />
-            <CardList
-              items={patentsToCardItems()}
-              icon={<Lightbulb className="w-7 h-7 text-yellow-500" />}
-              sectionTitle="发明专利"
+              sectionTitle="论文与专利"
+              scrollable
             />
           </div>
         </section>
