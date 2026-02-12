@@ -16,7 +16,7 @@ export default function Home() {
   return (
     <div className="flex flex-col items-center min-h-screen bg-background transition-colors duration-300">
       {/* ─── Section 1: Hero ─── */}
-      <section className="relative z-10 w-full pt-20 pb-16 md:pt-32 md:pb-24 px-4 flex flex-col items-center text-center max-w-5xl mx-auto space-y-8">
+      <section className="relative z-10 w-full pt-16 pb-12 sm:pt-20 sm:pb-16 md:pt-32 md:pb-24 px-4 flex flex-col items-center text-center max-w-5xl mx-auto space-y-6 sm:space-y-8">
         {/* Status Badge */}
         <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 border border-primary/20 text-primary text-sm font-medium mb-4">
           <span className="relative flex h-2 w-2">
@@ -26,28 +26,28 @@ export default function Home() {
           接受咨询与产学研合作
         </div>
 
-        <h1 className="text-4xl md:text-7xl font-bold tracking-tight text-foreground leading-tight">
+        <h1 className="text-3xl sm:text-4xl md:text-7xl font-bold tracking-tight text-foreground leading-tight">
           工程数字化 <br />
           <span className="bg-gradient-to-r from-primary to-blue-600 bg-clip-text text-transparent">
             智能建造先锋
           </span>
         </h1>
 
-        <p className="max-w-2xl mx-auto text-muted-foreground text-xl md:text-2xl font-light leading-relaxed">
+        <p className="max-w-2xl mx-auto text-muted-foreground text-lg sm:text-xl md:text-2xl font-light leading-relaxed">
           {resumeData.personalInfo.subTagline}
         </p>
 
         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-8">
           <Link
             href="/projects"
-            className="group px-8 py-4 bg-primary hover:bg-primary/90 text-primary-foreground rounded-full font-bold text-lg transition-all flex items-center gap-2 shadow-xl shadow-primary/20 hover:scale-105"
+            className="group px-6 py-3 sm:px-8 sm:py-4 bg-primary hover:bg-primary/90 text-primary-foreground rounded-full font-bold text-base sm:text-lg transition-all flex items-center gap-2 shadow-xl shadow-primary/20 hover:scale-105"
           >
             查看解决方案
             <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
           </Link>
           <a
             href="#academic"
-            className="px-8 py-4 bg-background hover:bg-accent text-foreground rounded-full font-bold text-lg transition-all border border-border hover:border-primary/50 shadow-lg flex items-center gap-2"
+            className="px-6 py-3 sm:px-8 sm:py-4 bg-background hover:bg-accent text-foreground rounded-full font-bold text-base sm:text-lg transition-all border border-border hover:border-primary/50 shadow-lg flex items-center gap-2"
           >
             学术成果
             <ChevronRight className="w-4 h-4 opacity-50" />
@@ -56,11 +56,11 @@ export default function Home() {
       </section>
 
       {/* ─── Section 2: Bio & Services ─── */}
-      <section className="w-full py-20 px-4 border-t border-border/50 bg-secondary/5">
-        <div className="max-w-5xl mx-auto space-y-12">
+      <section className="w-full py-12 md:py-20 px-4 border-t border-border/50 bg-secondary/5">
+        <div className="max-w-5xl mx-auto space-y-10 md:space-y-12">
           {/* Bio */}
           <div className="space-y-4 text-center max-w-3xl mx-auto">
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground">关于我</h2>
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground">关于我</h2>
             <p className="text-lg text-muted-foreground leading-relaxed">
               {resumeData.personalInfo.bio}
             </p>
@@ -138,19 +138,19 @@ export default function Home() {
       </section>
 
       {/* ─── Section 3: Experience Timeline ─── */}
-      <section className="w-full py-20 px-4 border-t border-border/50">
-        <div className="max-w-4xl mx-auto space-y-10">
+      <section className="w-full py-12 md:py-20 px-4 border-t border-border/50">
+        <div className="max-w-4xl mx-auto space-y-8 md:space-y-10">
           <div className="flex items-center gap-3 justify-center">
             <Briefcase className="w-7 h-7 text-primary" />
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground">
               职业经历
             </h2>
           </div>
 
-          <div className="space-y-12 border-l-2 border-border pl-8 ml-3">
+          <div className="space-y-10 sm:space-y-12 border-l-2 border-border pl-6 ml-2 sm:pl-8 sm:ml-3">
             {resumeData.experience.map((exp, idx) => (
               <div key={idx} className="relative group">
-                <div className="absolute -left-[41px] top-1 w-5 h-5 rounded-full bg-background border-4 border-primary group-hover:scale-110 transition-transform" />
+                <div className="absolute -left-[33px] sm:-left-[41px] top-1 w-4 h-4 sm:w-5 sm:h-5 rounded-full bg-background border-4 border-primary group-hover:scale-110 transition-transform" />
                 <div className="space-y-2">
                   <div className="flex flex-col sm:flex-row sm:items-baseline sm:justify-between">
                     <h3 className="text-xl font-bold text-card-foreground">
@@ -176,14 +176,14 @@ export default function Home() {
       {/* ─── Section 4: Academic Output ─── */}
       <section
         id="academic"
-        className="w-full py-20 px-4 border-t border-border/50 bg-secondary/5"
+        className="w-full py-12 md:py-20 px-4 border-t border-border/50 bg-secondary/5"
       >
-        <div className="max-w-4xl mx-auto space-y-16">
+        <div className="max-w-4xl mx-auto space-y-12 md:space-y-16">
           {/* Publications */}
           <div className="space-y-6">
             <div className="flex items-center gap-3 justify-center">
               <FileText className="w-7 h-7 text-primary" />
-              <h2 className="text-3xl md:text-4xl font-bold text-foreground">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground">
                 代表性论文
               </h2>
             </div>
@@ -191,9 +191,9 @@ export default function Home() {
               {resumeData.publications.map((pub, idx) => (
                 <div
                   key={idx}
-                  className="p-6 bg-card border border-border rounded-xl hover:border-border/80 transition-colors shadow-sm"
+                  className="p-4 sm:p-6 bg-card border border-border rounded-xl hover:border-border/80 transition-colors shadow-sm"
                 >
-                  <p className="text-muted-foreground leading-relaxed font-serif text-base">
+                  <p className="text-muted-foreground leading-relaxed font-serif text-sm sm:text-base break-words">
                     {pub}
                   </p>
                 </div>
@@ -205,7 +205,7 @@ export default function Home() {
           <div className="space-y-6">
             <div className="flex items-center gap-3 justify-center">
               <Lightbulb className="w-7 h-7 text-yellow-500" />
-              <h2 className="text-3xl md:text-4xl font-bold text-foreground">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground">
                 发明专利
               </h2>
             </div>
@@ -213,12 +213,12 @@ export default function Home() {
               {resumeData.patents.map((patent, idx) => (
                 <div
                   key={idx}
-                  className="p-6 bg-card/50 border border-border rounded-xl hover:bg-card transition-colors shadow-sm"
+                  className="p-4 sm:p-6 bg-card/50 border border-border rounded-xl hover:bg-card transition-colors shadow-sm"
                 >
                   <p className="text-muted-foreground font-mono text-xs mb-2">
                     专利 {idx + 1}
                   </p>
-                  <p className="text-foreground text-sm">{patent}</p>
+                  <p className="text-foreground text-sm break-words">{patent}</p>
                 </div>
               ))}
             </div>

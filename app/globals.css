@@ -109,6 +109,23 @@
 
 }
 
+/* Mobile optimizations */
+html {
+  -webkit-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: transparent;
+  overflow-x: hidden;
+}
+
+body {
+  overflow-x: hidden;
+  overscroll-behavior-y: none;
+}
+
+/* Safe area for phones with bottom bars (iPhone notch, etc.) */
+.safe-bottom {
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+
 /* Custom utilities */
 @utility container {
   margin-inline: auto;

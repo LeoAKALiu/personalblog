@@ -38,7 +38,7 @@ export const metadata: Metadata = {
   creator: resumeData.personalInfo.name,
   openGraph: {
     type: "website",
-    locale: "en_US",
+    locale: "zh_CN",
     url: SITE_URL,
     title: `${resumeData.personalInfo.name} - ${resumeData.personalInfo.tagline}`,
     description: resumeData.personalInfo.subTagline,
@@ -90,9 +90,19 @@ export default function RootLayout({
             {children}
           </main>
           <ContactFAB />
-          <footer className="bg-muted/50 border-t border-border py-8 mt-auto">
-            <div className="max-w-7xl mx-auto px-4 text-center text-muted-foreground">
+          <footer className="bg-muted/50 border-t border-border py-8 mt-auto safe-bottom">
+            <div className="max-w-7xl mx-auto px-4 text-center text-muted-foreground space-y-2">
               <p>&copy; {new Date().getFullYear()} Liu Bo. All rights reserved.</p>
+              <p className="text-sm">
+                <a
+                  href="https://beian.miit.gov.cn/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-foreground transition-colors"
+                >
+                  沪ICP备2026005282号-1
+                </a>
+              </p>
             </div>
           </footer>
         </ThemeProvider>

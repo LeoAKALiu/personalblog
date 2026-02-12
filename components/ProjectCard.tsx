@@ -142,26 +142,26 @@ export function ProjectCard({ project }: ProjectCardProps) {
 
       {/* Modal: full case study */}
       {isModalOpen && (
-        <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-6">
+        <div className="fixed inset-0 z-[100] flex items-end sm:items-center justify-center p-0 sm:p-4 md:p-6">
           <div
             className="absolute inset-0 bg-background/80"
             onClick={() => setIsModalOpen(false)}
             aria-hidden
           />
-          <div className="relative w-full max-w-5xl bg-card rounded-2xl border border-border shadow-2xl flex flex-col max-h-[90vh] overflow-hidden animate-in fade-in zoom-in duration-200">
-            <div className="flex items-center justify-between p-4 border-b border-border">
-              <h3 className="text-xl font-bold text-card-foreground">
+          <div className="relative w-full sm:max-w-5xl bg-card rounded-t-2xl sm:rounded-2xl border border-border shadow-2xl flex flex-col max-h-screen sm:max-h-[90vh] overflow-hidden animate-in fade-in slide-in-from-bottom-4 sm:zoom-in duration-200">
+            <div className="flex items-center justify-between p-3 sm:p-4 border-b border-border">
+              <h3 className="text-base sm:text-xl font-bold text-card-foreground truncate pr-2">
                 {project.title}
               </h3>
               <button
                 onClick={() => setIsModalOpen(false)}
-                className="p-2 text-muted-foreground hover:text-foreground rounded-full hover:bg-muted"
+                className="p-2 text-muted-foreground hover:text-foreground rounded-full hover:bg-muted shrink-0"
                 aria-label="关闭"
               >
                 <X className="w-5 h-5" />
               </button>
             </div>
-            <div className="flex-1 overflow-y-auto p-6">
+            <div className="flex-1 overflow-y-auto p-4 sm:p-6">
               <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
                 <div className="lg:col-span-2 space-y-8">
                   <div className="aspect-video w-full bg-muted rounded-lg border border-border overflow-hidden flex items-center justify-center relative">

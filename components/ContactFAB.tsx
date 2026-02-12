@@ -27,12 +27,12 @@ export function ContactFAB() {
   }, [isOpen]);
 
   return (
-    <div className="fixed bottom-6 right-6 z-50 flex flex-col items-end gap-3">
+    <div className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-50 flex flex-col items-end gap-3">
       {/* Contact Card */}
       {isOpen && (
         <div
           ref={panelRef}
-          className="w-72 bg-card border border-border rounded-2xl shadow-2xl p-5 space-y-4 animate-in fade-in slide-in-from-bottom-2 duration-200"
+          className="w-[calc(100vw-3rem)] sm:w-72 bg-card border border-border rounded-2xl shadow-2xl p-5 space-y-4 animate-in fade-in slide-in-from-bottom-2 duration-200"
         >
           <div className="flex items-center justify-between">
             <h3 className="text-base font-bold text-card-foreground">联系方式</h3>
@@ -98,7 +98,7 @@ export function ContactFAB() {
       <button
         ref={buttonRef}
         onClick={() => setIsOpen((prev) => !prev)}
-        className="w-14 h-14 rounded-full bg-primary text-primary-foreground shadow-lg hover:bg-primary/90 transition-all hover:scale-105 flex items-center justify-center"
+        className="w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-primary text-primary-foreground shadow-lg hover:bg-primary/90 transition-all hover:scale-105 flex items-center justify-center"
         aria-label="联系方式"
       >
         {isOpen ? (
