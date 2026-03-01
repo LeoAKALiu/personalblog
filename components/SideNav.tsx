@@ -33,7 +33,7 @@ export function SideNav(): React.ReactElement {
               setActiveSection(id);
             }
           },
-          { rootMargin: "-20% 0px -60% 0px", threshold: 0 }
+          { rootMargin: "-30% 0px -60% 0px", threshold: 0 }
         );
 
         observer.observe(el);
