@@ -92,8 +92,8 @@ export default function ProjectsPage() {
               : "暂无项目"}
           </p>
         ) : (
-          filtered.map((project, idx) => (
-            <ProjectCard key={idx} project={project} />
+          filtered.map((project) => (
+            <ProjectCard key={project.title} project={project} />
           ))
         )}
       </section>
