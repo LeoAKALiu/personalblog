@@ -233,8 +233,33 @@ export const resumeData = {
   ],
   projects: [
     {
+      title: "市政机械哨兵监控系统",
+      category: "Demo",
+      thumbnailUrl: "",
+      challenge: "市政施工场地出入口'黑车'混入难题：未备案工程车辆（挖掘机、运输车）擅自进场，带来安全生产隐患；传统人工登记效率低、无法全天候覆盖，管理漏洞大。",
+      solution: "研发'市政机械哨兵'一体化终端：双目摄像头识别车辆类型与距离，BLE蓝牙网关读取备案车辆'电子身份证'信标，视觉-射频智能融合，秒级判定'已备案/未备案'并自动抓图存证。搭载NVIDIA Jetson边缘计算主机，全程本地推理，无需云端。",
+      impact: "为济南城建集团研发，实现施工场地出入口7×24小时无人值守智能核验；未备案工程车实时告警，事件图文留档，大幅降低人工巡查成本与安全管理漏洞。",
+      description: "基于双目视觉与BLE信标融合的工程车辆智能准入报警系统原型，部署于市政施工场地出入口，自动识别并预警未备案'黑车'进场，兼具社会车辆车牌识别功能。",
+      tags: ["双目视觉", "BLE融合", "边缘计算", "Jetson", "Demo"],
+      demoUrl: "http://123.249.9.250:8501/",
+      type: "iframe",
+    },
+    {
+      title: "街景 to BIM——建筑立面反演系统",
+      category: "Demo",
+      thumbnailUrl: "",
+      challenge: "既有建筑立面数字化成本高昂：人工测绘与CAD建模耗时长、依赖专业设备，制约了城市数字孪生与存量建筑改造的规模化推进。",
+      solution: "以普通街景照片为唯一输入，自动化完成立面特征提取、深度估计与参数化建筑结构反演，输出可直接用于设计的CAD/BIM图纸，全程无需激光扫描仪等专业硬件。",
+      impact: "从一组街景照片到可交付建筑立面CAD图纸，端到端流程大幅缩短，降低既有建筑数字化门槛，为城市更新与建筑改造提供低成本数字底座。",
+      description: "基于街景图像的建筑立面结构自动反演系统（NewDemoFacade），输入普通街道照片，输出参数化建筑立面CAD/BIM模型，服务于城市数字孪生与存量建筑改造场景。",
+      tags: ["BIM", "立面重建", "计算机视觉", "CAD", "Demo"],
+      demoUrl: "http://47.98.176.41:8000/",
+      type: "iframe",
+    },
+    {
       title: "InView 施工安全监控系统",
       category: "产品",
+      thumbnailUrl: "",
       challenge: "传统人工监控滞后严重（24小时+），且因人员疲劳导致 80% 的安全隐患被遗漏。",
       solution: "部署边缘计算单元 + 轻量化 CV 模型，实现毫秒级违规行为检测。",
       impact: "误报率降低 60%，每个工地每天节省 2 名安全巡检员。试点阶段实现零事故。",
@@ -246,6 +271,7 @@ export const resumeData = {
     {
       title: "CT 管道分割算法",
       category: "算法",
+      thumbnailUrl: "",
       challenge: "工业管道的人工检测速度慢、易出错，且标准难以统一。",
       solution: "将医疗级深度学习分割算法迁移至工业 X 光/CT 图像分析中。",
       impact: "实现了 99.8% 的分割准确率，使全自动缺陷筛查成为可能。",
@@ -256,7 +282,8 @@ export const resumeData = {
     },
     {
       title: "Construction Machinery Data Augmentation",
-      category: "科研",
+      category: "算法",
+      thumbnailUrl: "",
       challenge: "施工机械标注数据极度匮乏，限制了模型在复杂多变环境下的性能。",
       solution: "开发了一种上下文感知的物体放置算法，用于生成逼真的合成训练数据。",
       impact: "在低数据场景下将检测 mAP 提升了 15%。发表于 Developments in the Built Environment (Q1)。",
@@ -267,7 +294,8 @@ export const resumeData = {
     },
     {
       title: "Face Super-Resolution for Worker ID",
-      category: "科研",
+      category: "算法",
+      thumbnailUrl: "",
       challenge: "工地监控摄像头往往捕捉到低分辨率人脸，导致违规人员身份难以确认。",
       solution: "提出了一种基于 GAN 的超分辨率框架，从模糊输入中恢复高保真细节。",
       impact: "将低质量素材的身份识别率提升至 85%。成果发表于 IEEE CAC。",
@@ -309,6 +337,7 @@ export const resumeData = {
       venue: "Journal of Management in Engineering",
       year: "2021",
       metrics: "SCI, JCR Q1, IF=6.415",
+      link: "https://liubopersonalblog.oss-cn-beijing.aliyuncs.com/Collaboration%20networks%20and%20bidding%20competitiveness%20in%20megaprojects.pdf",
     },
     {
       title: "A Novel Face Super-Resolution-Based Framework for Identity Recognition of Unsafe Behavior Workers",
@@ -316,6 +345,7 @@ export const resumeData = {
       venue: "2020 Chinese Automation Congress (CAC), IEEE",
       year: "2020",
       metrics: "EI",
+      link: "https://liubopersonalblog.oss-cn-beijing.aliyuncs.com/A_Novel_Face_Super-Resolution-Based_Framework_for_Identity_Recognition_of_Unsafe_Behavior_Workers.pdf",
     },
     {
       title: "Generating Synthetic Images for Construction Machinery Data Augmentation Utilizing Context-Aware Object Placement",
@@ -323,6 +353,7 @@ export const resumeData = {
       venue: "Developments in the Built Environment",
       year: "2025",
       metrics: "SCI, JCR Q1, IF=6.5",
+      link: "https://liubopersonalblog.oss-cn-beijing.aliyuncs.com/1-s2.0-S2666165925000109-main.pdf",
     },
     {
       title: "Integrated vision-based automated progress monitoring of indoor construction using Mask R-CNN and BIM",
@@ -330,6 +361,7 @@ export const resumeData = {
       venue: "Automation in Construction",
       year: "2022",
       metrics: "SCI, JCR Q1, IF=10.517",
+      link: "https://liubopersonalblog.oss-cn-beijing.aliyuncs.com/1-s2.0-S092658052200200X-main.pdf",
     },
     {
       title: "Non-intrusive comfort sensing: Detecting age and gender from infrared images for personal thermal comfort",
@@ -337,6 +369,7 @@ export const resumeData = {
       venue: "Building and Environment",
       year: "2022",
       metrics: "SCI, JCR Q1, IF=7.093",
+      link: "https://liubopersonalblog.oss-cn-beijing.aliyuncs.com/1-s2.0-S0360132322004917-main.pdf",
     },
     {
       title: "Photovoltaic panel waste assessment and embodied material flows in China, 2000-2050",
@@ -344,8 +377,9 @@ export const resumeData = {
       venue: "Journal of Environmental Management",
       year: "2023",
       metrics: "SCI, JCR Q1, IF=8.7",
+      link: "https://liubopersonalblog.oss-cn-beijing.aliyuncs.com/1-s2.0-S0301479723004632-main.pdf",
     },
-  ] satisfies Publication[],
+  ] as Publication[],
   /** Structured patents for CardList component */
   structuredPatents: [
     {
@@ -383,5 +417,5 @@ export const resumeData = {
       year: "2022",
       patentType: "实用新型专利",
     },
-  ] satisfies Patent[],
+  ] as Patent[],
 };

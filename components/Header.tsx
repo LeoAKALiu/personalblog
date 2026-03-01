@@ -36,16 +36,6 @@ export function Header(): React.ReactElement {
   const isHome = pathname === "/";
   const [mobileOpen, setMobileOpen] = useState<boolean>(false);
   const [activeSection, setActiveSection] = useState<string>("");
-  const [scrolledDown, setScrolledDown] = useState<boolean>(false);
-
-  // Track scroll position for showing/hiding section nav
-  useEffect(() => {
-    function onScroll(): void {
-      setScrolledDown(window.scrollY > 60);
-    }
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
 
   // IntersectionObserver scroll-spy for sections (home page only)
   useEffect(() => {
@@ -141,33 +131,6 @@ export function Header(): React.ReactElement {
           </div>
         </div>
       </nav>
-
-      {/* Section navigation bar (home page only, desktop) */}
-      {isHome && (
-        <div
-          className={cn(
-            "hidden md:block bg-background/90 border-b border-border/50 transition-all duration-300",
-            scrolledDown ? "py-1" : "py-2"
-          )}
-        >
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-center gap-1">
-            {sectionLinks.map(({ id, label }) => (
-              <button
-                key={id}
-                onClick={() => scrollToSection(id)}
-                className={cn(
-                  "px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200 min-h-[44px]",
-                  activeSection === id
-                    ? "text-primary bg-primary/10"
-                    : "text-muted-foreground hover:text-foreground hover:bg-accent"
-                )}
-              >
-                {label}
-              </button>
-            ))}
-          </div>
-        </div>
-      )}
 
       {/* Mobile menu */}
       {mobileOpen && (

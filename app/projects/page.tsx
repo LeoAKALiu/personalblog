@@ -6,22 +6,11 @@ import { ProjectCard, type ProjectItem } from "@/components/ProjectCard";
 import { Hammer, Tag } from "lucide-react";
 import { clsx } from "clsx";
 
-const PRODUCT_CATEGORIES = ["产品", "项目"];
-const RESEARCH_CATEGORIES = ["科研", "算法"];
-
 function filterByTags(projects: ProjectItem[], selectedTags: string[]) {
   if (selectedTags.length === 0) return projects;
   return projects.filter((p) =>
     p.tags.some((tag) => selectedTags.includes(tag))
   );
-}
-
-function getProductProjects(projects: ProjectItem[]) {
-  return projects.filter((p) => PRODUCT_CATEGORIES.includes(p.category));
-}
-
-function getResearchProjects(projects: ProjectItem[]) {
-  return projects.filter((p) => RESEARCH_CATEGORIES.includes(p.category));
 }
 
 export default function ProjectsPage() {
@@ -41,8 +30,6 @@ export default function ProjectsPage() {
 
   const allProjects = resumeData.projects as ProjectItem[];
   const filtered = filterByTags(allProjects, selectedTags);
-  const productProjects = getProductProjects(filtered);
-  const researchProjects = getResearchProjects(filtered);
 
   return (
     <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-12">
@@ -53,7 +40,7 @@ export default function ProjectsPage() {
           解决方案
         </h1>
         <p className="text-muted-foreground max-w-2xl text-lg">
-          产品与项目实践、科研与算法成果。通过下方标签筛选您关心的方向。
+          在线 Demo、产品与项目实践、科研与算法成果。通过下方标签筛选您关心的方向。
         </p>
       </div>
 
@@ -96,43 +83,18 @@ export default function ProjectsPage() {
         )}
       </div>
 
-      {/* Section: 产品/项目 */}
+      {/* Unified project list */}
       <section className="space-y-6">
-        <h2 className="text-2xl font-bold text-card-foreground border-b border-border pb-2">
-          产品 / 项目
-        </h2>
-        {productProjects.length === 0 ? (
+        {filtered.length === 0 ? (
           <p className="text-muted-foreground py-8">
             {selectedTags.length > 0
-              ? "当前筛选条件下暂无产品/项目"
-              : "暂无产品/项目"}
+              ? "当前筛选条件下暂无匹配条目"
+              : "暂无项目"}
           </p>
         ) : (
-          <div className="space-y-6">
-            {productProjects.map((project, idx) => (
-              <ProjectCard key={`product-${idx}`} project={project} />
-            ))}
-          </div>
-        )}
-      </section>
-
-      {/* Section: 科研/算法 */}
-      <section className="space-y-6">
-        <h2 className="text-2xl font-bold text-card-foreground border-b border-border pb-2">
-          科研 / 算法
-        </h2>
-        {researchProjects.length === 0 ? (
-          <p className="text-muted-foreground py-8">
-            {selectedTags.length > 0
-              ? "当前筛选条件下暂无科研/算法"
-              : "暂无科研/算法"}
-          </p>
-        ) : (
-          <div className="space-y-6">
-            {researchProjects.map((project, idx) => (
-              <ProjectCard key={`research-${idx}`} project={project} />
-            ))}
-          </div>
+          filtered.map((project, idx) => (
+            <ProjectCard key={idx} project={project} />
+          ))
         )}
       </section>
     </div>

@@ -14,6 +14,8 @@ export interface ProjectItem {
   challenge?: string;
   solution?: string;
   impact?: string;
+  /** Static thumbnail image shown in the card's left panel */
+  thumbnailUrl?: string;
 }
 
 type TabId = "challenge" | "solution" | "impact";
@@ -48,7 +50,8 @@ export function ProjectCard({ project }: ProjectCardProps) {
   const [activeTab, setActiveTab] = useState<TabId>("challenge");
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const hasDemoImage = project.demoUrl && project.type === "image";
+  const hasThumbnail = !!project.thumbnailUrl;
+  const hasDemoImage = !hasThumbnail && project.demoUrl && project.type === "image";
   const hasDemoIframe = project.demoUrl && project.type === "iframe";
 
   const tabContent =
@@ -64,7 +67,15 @@ export function ProjectCard({ project }: ProjectCardProps) {
         {/* Left: Thumbnail */}
         <div className="sm:w-56 md:w-64 shrink-0 h-44 sm:h-auto sm:min-h-[220px] bg-muted relative flex items-center justify-center overflow-hidden">
           <div className="absolute inset-0 bg-gradient-to-br from-muted to-background/50" />
-          {hasDemoImage ? (
+          {hasThumbnail ? (
+            /* eslint-disable-next-line @next/next/no-img-element */
+            <img
+              src={project.thumbnailUrl}
+              alt={project.title}
+              className="absolute inset-0 w-full h-full object-cover"
+              loading="lazy"
+            />
+          ) : hasDemoImage ? (
             /* eslint-disable-next-line @next/next/no-img-element */
             <img
               src={project.demoUrl}

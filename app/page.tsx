@@ -19,6 +19,7 @@ import { InfoCard } from "@/components/InfoCard";
 import { CardList, type CardItem } from "@/components/CardList";
 import { FadeInOnScroll } from "@/components/FadeInOnScroll";
 import { ScrollToTop } from "@/components/ScrollToTop";
+import { SideNav } from "@/components/SideNav";
 import { useState } from "react";
 
 /** Map service icon names to lucide components */
@@ -121,198 +122,204 @@ export default function Home(): React.ReactElement {
   }
 
   return (
-    <div className="flex flex-col items-center min-h-screen bg-background transition-colors duration-300">
-      {/* ─── Section 1: Hero ─── */}
-      <FadeInOnScroll>
-        <section
-          id="hero"
-          className="relative z-10 w-full pt-16 pb-12 sm:pt-20 sm:pb-16 md:pt-32 md:pb-24 px-4 flex flex-col items-center text-center max-w-5xl mx-auto space-y-6 sm:space-y-8"
-        >
-          {/* Status Badge */}
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 border border-primary/20 text-primary text-sm font-medium mb-4">
-            <span className="relative flex h-2 w-2">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
-            </span>
-            接受咨询与产学研合作
-          </div>
+    <div className="flex min-h-screen bg-background transition-colors duration-300">
+      {/* Left sidebar section nav (desktop only) */}
+      <SideNav />
 
-          <h1 className="text-3xl sm:text-4xl md:text-7xl font-bold tracking-tight text-foreground leading-tight">
-            工程数字化 <br />
-            <span className="bg-gradient-to-r from-primary to-blue-600 bg-clip-text text-transparent">
-              智能建造先锋
-            </span>
-          </h1>
-
-          <p className="max-w-2xl mx-auto text-muted-foreground text-lg sm:text-xl md:text-2xl font-light leading-relaxed">
-            {resumeData.personalInfo.subTagline}
-          </p>
-
-          {/* CTA Buttons */}
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-8">
-            <a
-              href="#academic"
-              className="group px-6 py-3 sm:px-8 sm:py-4 bg-primary hover:bg-primary/90 text-primary-foreground rounded-full font-bold text-base sm:text-lg transition-all flex items-center gap-2 shadow-xl shadow-primary/20 hover:shadow-2xl hover:scale-105 active:scale-95 min-h-[48px] min-w-[160px] justify-center"
-            >
-              查看代表性案例
-              <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-            </a>
-            <button
-              onClick={openContact}
-              className="px-6 py-3 sm:px-8 sm:py-4 bg-background hover:bg-primary text-primary hover:text-primary-foreground rounded-full font-bold text-base sm:text-lg transition-all border-2 border-primary shadow-lg flex items-center gap-2 hover:shadow-2xl hover:scale-105 active:scale-95 min-h-[48px] min-w-[160px] justify-center"
-            >
-              <MessageCircle className="w-5 h-5" />
-              预约沟通
-            </button>
-          </div>
-        </section>
-      </FadeInOnScroll>
-
-      {/* ─── Section 2: About ─── */}
-      <FadeInOnScroll>
-        <section
-          id="about"
-          className="w-full py-12 md:py-20 px-4 border-t border-border/50 bg-secondary/5"
-        >
-          <div className="max-w-5xl mx-auto space-y-10 md:space-y-12">
-            {/* Bio */}
-            <div className="space-y-4 text-center max-w-3xl mx-auto">
-              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground">
-                关于我
-              </h2>
-              <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">
-                {resumeData.personalInfo.bio}
-              </p>
+      {/* Main content */}
+      <div className="flex-1 min-w-0 flex flex-col items-center">
+        {/* ─── Section 1: Hero ─── */}
+        <FadeInOnScroll>
+          <section
+            id="hero"
+            className="relative z-10 w-full pt-8 pb-8 sm:pt-12 sm:pb-10 md:pt-16 md:pb-12 px-4 flex flex-col items-center text-center max-w-4xl mx-auto space-y-5 sm:space-y-6"
+          >
+            {/* Status Badge */}
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 border border-primary/20 text-primary text-sm font-medium">
+              <span className="relative flex h-2 w-2">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
+              </span>
+              接受咨询与产学研合作
             </div>
 
-            {/* Education - summarized */}
-            <div className="space-y-6">
-              <div className="flex items-center gap-3 justify-center">
-                <GraduationCap className="w-7 h-7 text-primary" />
-                <h3 className="text-xl sm:text-2xl font-bold text-foreground">
-                  教育背景
-                </h3>
-              </div>
-              <div className="grid gap-4 sm:grid-cols-3">
-                {resumeData.education.map((edu, idx) => (
-                  <div
-                    key={idx}
-                    className="p-4 sm:p-5 rounded-xl bg-card border border-border hover:border-primary/50 transition-colors shadow-sm text-center"
-                  >
-                    <h4 className="text-base font-bold text-card-foreground">
-                      {edu.school}
-                    </h4>
-                    <p className="text-sm text-muted-foreground mt-1">
-                      {edu.degree}
-                    </p>
-                    <span className="text-xs font-mono text-primary mt-2 block">
-                      {edu.dates}
-                    </span>
-                  </div>
-                ))}
-              </div>
-            </div>
+            <h1 className="text-3xl sm:text-4xl md:text-6xl font-bold tracking-tight text-foreground leading-tight">
+              工程数字化 <br />
+              <span className="bg-gradient-to-r from-primary to-blue-600 bg-clip-text text-transparent">
+                智能建造先锋
+              </span>
+            </h1>
 
-            {/* Honors */}
-            <div className="space-y-6">
-              <div className="flex items-center gap-3 justify-center">
-                <Award className="w-7 h-7 text-primary" />
-                <h3 className="text-xl sm:text-2xl font-bold text-foreground">
-                  荣誉奖项
-                </h3>
+            <p className="max-w-2xl mx-auto text-muted-foreground text-base sm:text-lg md:text-xl font-light leading-relaxed">
+              {resumeData.personalInfo.subTagline}
+            </p>
+
+            {/* CTA Buttons */}
+            <div className="flex flex-col sm:flex-row gap-3 justify-center items-center pt-4">
+              <a
+                href="/projects"
+                className="group px-6 py-3 sm:px-8 sm:py-3.5 bg-primary hover:bg-primary/90 text-primary-foreground rounded-full font-bold text-base transition-all flex items-center gap-2 shadow-xl shadow-primary/20 hover:shadow-2xl hover:scale-105 active:scale-95 min-h-[48px] min-w-[160px] justify-center"
+              >
+                查看代表性案例
+                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+              </a>
+              <button
+                onClick={openContact}
+                className="px-6 py-3 sm:px-8 sm:py-3.5 bg-background hover:bg-primary text-primary hover:text-primary-foreground rounded-full font-bold text-base transition-all border-2 border-primary shadow-lg flex items-center gap-2 hover:shadow-2xl hover:scale-105 active:scale-95 min-h-[48px] min-w-[160px] justify-center"
+              >
+                <MessageCircle className="w-5 h-5" />
+                预约沟通
+              </button>
+            </div>
+          </section>
+        </FadeInOnScroll>
+
+        {/* ─── Section 2: About ─── */}
+        <FadeInOnScroll>
+          <section
+            id="about"
+            className="w-full py-8 md:py-12 px-4 border-t border-border/50 bg-secondary/5"
+          >
+            <div className="max-w-4xl mx-auto space-y-6 md:space-y-8">
+              {/* Bio */}
+              <div className="space-y-3 text-center max-w-3xl mx-auto">
+                <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground">
+                  关于我
+                </h2>
+                <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">
+                  {resumeData.personalInfo.bio}
+                </p>
               </div>
-              <div className="grid gap-3 sm:grid-cols-2">
-                {resumeData.honors.map((honor, idx) => (
-                  <FadeInOnScroll key={idx} delay={idx * 80}>
-                    <div className="p-3 sm:p-4 rounded-lg bg-card/50 border border-border flex items-start gap-3 min-h-[44px]">
-                      <div className="mt-1.5 w-2 h-2 rounded-full bg-primary shrink-0" />
-                      <p className="text-muted-foreground text-sm">{honor}</p>
+
+              {/* Education - summarized */}
+              <div className="space-y-4">
+                <div className="flex items-center gap-3 justify-center">
+                  <GraduationCap className="w-6 h-6 text-primary" />
+                  <h3 className="text-xl sm:text-2xl font-bold text-foreground">
+                    教育背景
+                  </h3>
+                </div>
+                <div className="grid gap-3 sm:grid-cols-3">
+                  {resumeData.education.map((edu, idx) => (
+                    <div
+                      key={idx}
+                      className="p-4 rounded-xl bg-card border border-border hover:border-primary/50 transition-colors shadow-sm text-center"
+                    >
+                      <h4 className="text-base font-bold text-card-foreground">
+                        {edu.school}
+                      </h4>
+                      <p className="text-sm text-muted-foreground mt-1">
+                        {edu.degree}
+                      </p>
+                      <span className="text-xs font-mono text-primary mt-2 block">
+                        {edu.dates}
+                      </span>
                     </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Honors */}
+              <div className="space-y-4">
+                <div className="flex items-center gap-3 justify-center">
+                  <Award className="w-6 h-6 text-primary" />
+                  <h3 className="text-xl sm:text-2xl font-bold text-foreground">
+                    荣誉奖项
+                  </h3>
+                </div>
+                <div className="grid gap-2 sm:grid-cols-2">
+                  {resumeData.honors.map((honor, idx) => (
+                    <FadeInOnScroll key={idx} delay={idx * 60}>
+                      <div className="p-3 rounded-lg bg-card/50 border border-border flex items-start gap-3 min-h-[44px]">
+                        <div className="mt-1.5 w-2 h-2 rounded-full bg-primary shrink-0" />
+                        <p className="text-muted-foreground text-sm">{honor}</p>
+                      </div>
+                    </FadeInOnScroll>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </section>
+        </FadeInOnScroll>
+
+        {/* ─── Section 3: Services (InfoCards) ─── */}
+        <FadeInOnScroll>
+          <section
+            id="services"
+            className="w-full py-8 md:py-12 px-4 border-t border-border/50"
+          >
+            <div className="max-w-4xl mx-auto space-y-6 md:space-y-8">
+              <div className="flex items-center gap-3 justify-center">
+                <Brain className="w-6 h-6 text-primary" />
+                <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground">
+                  专业领域
+                </h2>
+              </div>
+              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+                {resumeData.services.map((service, idx) => (
+                  <FadeInOnScroll key={idx} delay={idx * 100}>
+                    <InfoCard
+                      icon={serviceIconMap[service.icon] || <Brain className="w-6 h-6" />}
+                      title={service.title}
+                      description={service.desc}
+                    />
                   </FadeInOnScroll>
                 ))}
               </div>
             </div>
-          </div>
-        </section>
-      </FadeInOnScroll>
+          </section>
+        </FadeInOnScroll>
 
-      {/* ─── Section 3: Services (InfoCards) ─── */}
-      <FadeInOnScroll>
-        <section
-          id="services"
-          className="w-full py-12 md:py-20 px-4 border-t border-border/50"
-        >
-          <div className="max-w-5xl mx-auto space-y-8 md:space-y-10">
-            <div className="flex items-center gap-3 justify-center">
-              <Brain className="w-7 h-7 text-primary" />
-              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground">
-                专业领域
-              </h2>
+        {/* ─── Section 4: Experience Timeline ─── */}
+        <FadeInOnScroll>
+          <section
+            id="experience"
+            className="w-full py-8 md:py-12 px-4 border-t border-border/50 bg-secondary/5"
+          >
+            <div className="max-w-3xl mx-auto space-y-6 md:space-y-8">
+              <div className="flex items-center gap-3 justify-center">
+                <Briefcase className="w-6 h-6 text-primary" />
+                <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground">
+                  职业经历
+                </h2>
+              </div>
+
+              <div className="space-y-8 sm:space-y-10 border-l-2 border-border pl-6 ml-2 sm:pl-8 sm:ml-3">
+                {resumeData.experience.map((exp, idx) => (
+                  <FadeInOnScroll key={idx} delay={idx * 120}>
+                    <ExperienceItem exp={exp} />
+                  </FadeInOnScroll>
+                ))}
+              </div>
             </div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6">
-              {resumeData.services.map((service, idx) => (
-                <FadeInOnScroll key={idx} delay={idx * 120}>
-                  <InfoCard
-                    icon={serviceIconMap[service.icon] || <Brain className="w-6 h-6" />}
-                    title={service.title}
-                    description={service.desc}
-                  />
-                </FadeInOnScroll>
-              ))}
+          </section>
+        </FadeInOnScroll>
+
+        {/* ─── Section 5: Academic Output (论文与专利合并，可滑动列表) ─── */}
+        <FadeInOnScroll>
+          <section
+            id="academic"
+            className="w-full py-8 md:py-12 px-4 border-t border-border/50"
+          >
+            <div className="max-w-3xl mx-auto">
+              <CardList
+                items={combinedAcademicItems()}
+                icon={<FileText className="w-6 h-6 text-primary" />}
+                sectionTitle="论文与专利"
+                scrollable
+              />
             </div>
-          </div>
-        </section>
-      </FadeInOnScroll>
+          </section>
+        </FadeInOnScroll>
 
-      {/* ─── Section 4: Experience Timeline ─── */}
-      <FadeInOnScroll>
-        <section
-          id="experience"
-          className="w-full py-12 md:py-20 px-4 border-t border-border/50 bg-secondary/5"
-        >
-          <div className="max-w-4xl mx-auto space-y-8 md:space-y-10">
-            <div className="flex items-center gap-3 justify-center">
-              <Briefcase className="w-7 h-7 text-primary" />
-              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground">
-                职业经历
-              </h2>
-            </div>
+        {/* ─── Section 6: Capabilities Matrix ─── */}
+        <div id="capabilities" className="w-full">
+          <CapabilitiesMatrix />
+        </div>
 
-            <div className="space-y-10 sm:space-y-12 border-l-2 border-border pl-6 ml-2 sm:pl-8 sm:ml-3">
-              {resumeData.experience.map((exp, idx) => (
-                <FadeInOnScroll key={idx} delay={idx * 150}>
-                  <ExperienceItem exp={exp} />
-                </FadeInOnScroll>
-              ))}
-            </div>
-          </div>
-        </section>
-      </FadeInOnScroll>
-
-      {/* ─── Section 5: Academic Output (论文与专利合并，可滑动列表) ─── */}
-      <FadeInOnScroll>
-        <section
-          id="academic"
-          className="w-full py-12 md:py-20 px-4 border-t border-border/50"
-        >
-          <div className="max-w-4xl mx-auto">
-            <CardList
-              items={combinedAcademicItems()}
-              icon={<FileText className="w-7 h-7 text-primary" />}
-              sectionTitle="论文与专利"
-              scrollable
-            />
-          </div>
-        </section>
-      </FadeInOnScroll>
-
-      {/* ─── Section 6: Capabilities Matrix ─── */}
-      <div id="capabilities">
-        <CapabilitiesMatrix />
+        {/* Back to top */}
+        <ScrollToTop />
       </div>
-
-      {/* Back to top */}
-      <ScrollToTop />
     </div>
   );
 }
