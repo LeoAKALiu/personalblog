@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { ExternalLink, Maximize2, X, Play, ImageIcon } from "lucide-react";
 import { clsx } from "clsx";
+import NextImage from "next/image";
 
 export interface ProjectItem {
   title: string;
@@ -68,20 +69,20 @@ export function ProjectCard({ project }: ProjectCardProps) {
         <div className="sm:w-56 md:w-64 shrink-0 h-44 sm:h-auto sm:min-h-[220px] bg-muted relative flex items-center justify-center overflow-hidden">
           <div className="absolute inset-0 bg-gradient-to-br from-muted to-background/50" />
           {hasThumbnail ? (
-            /* eslint-disable-next-line @next/next/no-img-element */
-            <img
-              src={project.thumbnailUrl}
+            <NextImage
+              src={project.thumbnailUrl!}
               alt={project.title}
-              className="absolute inset-0 w-full h-full object-cover"
-              loading="lazy"
+              fill
+              className="object-cover"
+              sizes="(max-width: 640px) 100vw, 256px"
             />
           ) : hasDemoImage ? (
-            /* eslint-disable-next-line @next/next/no-img-element */
-            <img
+            <NextImage
               src={project.demoUrl}
               alt={project.title}
-              className="absolute inset-0 w-full h-full object-cover"
-              loading="lazy"
+              fill
+              className="object-cover"
+              sizes="(max-width: 640px) 100vw, 256px"
             />
           ) : hasDemoIframe ? (
             <div className="relative z-10 text-muted-foreground group-hover:text-primary transition-colors">
@@ -184,12 +185,12 @@ export function ProjectCard({ project }: ProjectCardProps) {
                         sandbox="allow-scripts allow-same-origin"
                       />
                     ) : hasDemoImage ? (
-                      /* eslint-disable-next-line @next/next/no-img-element */
-                      <img
+                      <NextImage
                         src={project.demoUrl}
                         alt={project.title}
-                        className="absolute inset-0 w-full h-full object-cover"
-                        loading="lazy"
+                        fill
+                        className="object-cover"
+                        sizes="(max-width: 768px) 100vw, 66vw"
                       />
                     ) : (
                       <div className="text-center p-8">
