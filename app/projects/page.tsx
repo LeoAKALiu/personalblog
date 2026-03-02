@@ -1,10 +1,26 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useState } from "react";
 import { resumeData } from "@/data/resume";
 import { ProjectCard, type ProjectItem } from "@/components/ProjectCard";
-import { Hammer, Tag } from "lucide-react";
+import { Hammer } from "lucide-react";
 import { clsx } from "clsx";
+
+/** 场景类 tags — external-facing scenarios */
+const SCENE_TAGS = [
+  "城市体检",
+  "既有建筑运维",
+  "基础设施韧性诊断",
+  "总承包数字化赋能",
+];
+
+/** 能力类 tags — internal capability types */
+const CAPABILITY_TAGS = [
+  "多源感知融合",
+  "物理驱动AI",
+  "垂直大模型系统",
+  "数据资产闭环",
+];
 
 function filterByTags(projects: ProjectItem[], selectedTags: string[]) {
   if (selectedTags.length === 0) return projects;
@@ -15,12 +31,6 @@ function filterByTags(projects: ProjectItem[], selectedTags: string[]) {
 
 export default function ProjectsPage() {
   const [selectedTags, setSelectedTags] = useState<string[]>([]);
-
-  const allTags = useMemo(() => {
-    const set = new Set<string>();
-    resumeData.projects.forEach((p) => p.tags.forEach((t) => set.add(t)));
-    return Array.from(set).sort();
-  }, []);
 
   const toggleTag = (tag: string) => {
     setSelectedTags((prev) =>
@@ -40,46 +50,68 @@ export default function ProjectsPage() {
           解决方案
         </h1>
         <p className="text-muted-foreground max-w-2xl text-lg">
-          在线 Demo、产品与项目实践、科研与算法成果。通过下方标签筛选您关心的方向。
+          在线 Demo、产品与项目实践。通过下方标签筛选您关心的方向。
         </p>
       </div>
 
-      {/* Tag filter bar */}
-      <div className="space-y-3">
-        <div className="flex items-center gap-2 text-sm font-medium text-foreground">
-          <Tag className="w-4 h-4 text-primary" />
-          按标签筛选
-        </div>
-        <div className="flex flex-wrap gap-2">
-          {allTags.map((tag) => (
-            <button
-              key={tag}
-              type="button"
-              onClick={() => toggleTag(tag)}
-              className={clsx(
-                "px-3 py-1.5 rounded-full text-sm font-medium border transition-colors",
-                selectedTags.includes(tag)
-                  ? "bg-primary text-primary-foreground border-primary"
-                  : "bg-secondary/50 text-secondary-foreground border-border hover:border-primary/50 hover:text-foreground"
-              )}
-            >
-              {tag}
-            </button>
-          ))}
-          {selectedTags.length > 0 && (
-            <button
-              type="button"
-              onClick={() => setSelectedTags([])}
-              className="px-3 py-1.5 rounded-full text-sm font-medium border border-border bg-background text-muted-foreground hover:text-foreground hover:border-primary/50"
-            >
-              清除筛选
-            </button>
-          )}
-        </div>
-        {selectedTags.length > 0 && (
-          <p className="text-xs text-muted-foreground">
-            已选 {selectedTags.length} 个标签，显示包含任一标签的条目
+      {/* Tag filter bar — two categories */}
+      <div className="space-y-4">
+        {/* 场景类 */}
+        <div className="space-y-2">
+          <p className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">
+            场景类
           </p>
+          <div className="flex flex-wrap gap-2">
+            {SCENE_TAGS.map((tag) => (
+              <button
+                key={tag}
+                type="button"
+                onClick={() => toggleTag(tag)}
+                className={clsx(
+                  "px-3 py-1.5 rounded-full text-sm font-medium border transition-colors",
+                  selectedTags.includes(tag)
+                    ? "bg-primary text-primary-foreground border-primary"
+                    : "bg-primary/5 text-primary border-primary/30 hover:bg-primary/10"
+                )}
+              >
+                {tag}
+              </button>
+            ))}
+          </div>
+        </div>
+
+        {/* 能力类 */}
+        <div className="space-y-2">
+          <p className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">
+            能力类
+          </p>
+          <div className="flex flex-wrap gap-2">
+            {CAPABILITY_TAGS.map((tag) => (
+              <button
+                key={tag}
+                type="button"
+                onClick={() => toggleTag(tag)}
+                className={clsx(
+                  "px-3 py-1.5 rounded-full text-sm font-medium border transition-colors",
+                  selectedTags.includes(tag)
+                    ? "bg-secondary text-secondary-foreground border-secondary"
+                    : "bg-secondary/30 text-secondary-foreground border-border hover:bg-secondary/50 hover:text-foreground"
+                )}
+              >
+                {tag}
+              </button>
+            ))}
+          </div>
+        </div>
+
+        {selectedTags.length > 0 && (
+          <button
+            type="button"
+            onClick={() => setSelectedTags([])}
+            className="px-3 py-1.5 rounded-full text-sm font-medium border border-border bg-background text-muted-foreground hover:text-foreground hover:border-primary/50"
+          >
+            清除筛选 ({selectedTags.length})
+          </button>
         )}
       </div>
 

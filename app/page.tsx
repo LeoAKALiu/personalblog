@@ -4,30 +4,20 @@ import { resumeData } from "@/data/resume";
 import {
   ArrowRight,
   MessageCircle,
-  Brain,
   Briefcase,
-  GraduationCap,
-  Award,
   FileText,
-  Lightbulb,
-  Terminal,
   ChevronDown,
   ChevronUp,
 } from "lucide-react";
-import { CapabilitiesMatrix } from "@/components/commercial/CapabilitiesMatrix";
-import { InfoCard } from "@/components/InfoCard";
 import { CardList, type CardItem } from "@/components/CardList";
 import { FadeInOnScroll } from "@/components/FadeInOnScroll";
 import { ScrollToTop } from "@/components/ScrollToTop";
 import { SideNav } from "@/components/SideNav";
+import { PainPoints } from "@/components/PainPoints";
+import { CapabilitiesNew } from "@/components/CapabilitiesNew";
+import { CooperationModes } from "@/components/CooperationModes";
 import { useState } from "react";
-
-/** Map service icon names to lucide components */
-const serviceIconMap: Record<string, React.ReactNode> = {
-  Lightbulb: <Lightbulb className="w-6 h-6" />,
-  Terminal: <Terminal className="w-6 h-6" />,
-  Brain: <Brain className="w-6 h-6" />,
-};
+import React from "react";
 
 /** Convert structured publications to CardItem format */
 function publicationsToCardItems(): CardItem[] {
@@ -55,17 +45,14 @@ function patentsToCardItems(): CardItem[] {
   }));
 }
 
-/** Combined academic output (papers + patents) sorted by year descending */
+/** Combined academic output sorted by year descending */
 function combinedAcademicItems(): CardItem[] {
-  const items = [
-    ...publicationsToCardItems(),
-    ...patentsToCardItems(),
-  ];
+  const items = [...publicationsToCardItems(), ...patentsToCardItems()];
   items.sort((a, b) => Number(b.year) - Number(a.year));
   return items;
 }
 
-/** Expandable experience item - shows first 2 items, rest toggleable */
+/** Expandable experience item */
 function ExperienceItem({
   exp,
 }: {
@@ -79,16 +66,18 @@ function ExperienceItem({
     <div className="relative group">
       <div className="absolute -left-[33px] sm:-left-[41px] top-1 w-4 h-4 sm:w-5 sm:h-5 rounded-full bg-background border-4 border-primary group-hover:scale-110 transition-transform" />
       <div className="space-y-2">
-        <div className="flex flex-col sm:flex-row sm:items-baseline sm:justify-between">
+        <div className="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-1">
           <h3 className="text-lg sm:text-xl font-bold text-card-foreground">
             {exp.role}
           </h3>
-          <span className="text-sm font-mono text-primary">{exp.dates}</span>
+          <span className="text-sm font-mono text-primary shrink-0">
+            {exp.dates}
+          </span>
         </div>
-        <h4 className="text-base sm:text-lg text-muted-foreground font-medium">
+        <h4 className="text-base text-muted-foreground font-medium">
           {exp.company}
         </h4>
-        <ul className="list-disc list-outside ml-5 space-y-1.5 text-sm sm:text-base text-muted-foreground mt-3">
+        <ul className="list-disc list-outside ml-5 space-y-1.5 text-sm text-muted-foreground mt-2">
           {visibleItems.map((item, i) => (
             <li key={i}>{item}</li>
           ))}
@@ -116,7 +105,6 @@ function ExperienceItem({
 }
 
 export default function Home(): React.ReactElement {
-  /** Open ContactFAB by dispatching a custom event */
   function openContact(): void {
     window.dispatchEvent(new CustomEvent("open-contact-fab"));
   }
@@ -128,165 +116,100 @@ export default function Home(): React.ReactElement {
 
       {/* Main content */}
       <div className="flex-1 min-w-0 flex flex-col items-center">
-        {/* ─── Section 1: Hero ─── */}
-        <FadeInOnScroll>
-          <section
-            id="hero"
-            className="relative z-10 w-full pt-8 pb-8 sm:pt-12 sm:pb-10 md:pt-16 md:pb-12 px-4 flex flex-col items-center text-center max-w-4xl mx-auto space-y-5 sm:space-y-6"
-          >
-            {/* Status Badge */}
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 border border-primary/20 text-primary text-sm font-medium">
+
+        {/* Section 1: Hero */}
+        <section
+          id="hero"
+          className="w-full pt-10 pb-10 md:pt-16 md:pb-14 px-4 border-b border-border/50"
+        >
+          <div className="max-w-2xl mx-auto space-y-6">
+            {/* Status badge */}
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 border border-primary/20 text-primary text-xs font-medium">
               <span className="relative flex h-2 w-2">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75" />
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-primary" />
               </span>
               接受咨询与产学研合作
             </div>
 
-            <h1 className="text-3xl sm:text-4xl md:text-6xl font-bold tracking-tight text-foreground leading-tight">
-              工程数字化 <br />
-              <span className="bg-gradient-to-r from-primary to-blue-600 bg-clip-text text-transparent">
-                智能建造先锋
-              </span>
+            {/* H1 */}
+            <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight text-foreground leading-snug">
+              {resumeData.personalInfo.tagline}
             </h1>
 
-            <p className="max-w-2xl mx-auto text-muted-foreground text-base sm:text-lg md:text-xl font-light leading-relaxed">
+            {/* Subtitle */}
+            <p className="text-base text-muted-foreground leading-relaxed max-w-xl">
               {resumeData.personalInfo.subTagline}
             </p>
 
-            {/* CTA Buttons */}
-            <div className="flex flex-col sm:flex-row gap-3 justify-center items-center pt-4">
+            {/* Three-line summary */}
+            <div className="space-y-2 border-l-2 border-primary/30 pl-4">
+              {[
+                "传统检测难以产生可决策的数据",
+                "AI 模型在工程场景落地率低",
+                "物理机理与数据模型尚未有效融合",
+              ].map((line, i) => (
+                <p key={i} className="text-sm text-muted-foreground">
+                  {line}
+                </p>
+              ))}
+            </div>
+
+            {/* CTAs */}
+            <div className="flex flex-col sm:flex-row gap-3 pt-2">
               <a
                 href="/projects"
-                className="group px-6 py-3 sm:px-8 sm:py-3.5 bg-primary hover:bg-primary/90 text-primary-foreground rounded-full font-bold text-base transition-all flex items-center gap-2 shadow-xl shadow-primary/20 hover:shadow-2xl hover:scale-105 active:scale-95 min-h-[48px] min-w-[160px] justify-center"
+                className="group inline-flex items-center justify-center gap-2 px-6 py-3 bg-primary hover:bg-primary/90 text-primary-foreground rounded-lg font-semibold text-sm transition-all hover:scale-105 active:scale-95 min-h-[44px] shadow-lg shadow-primary/20"
               >
                 查看代表性案例
-                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
               </a>
               <button
                 onClick={openContact}
-                className="px-6 py-3 sm:px-8 sm:py-3.5 bg-background hover:bg-primary text-primary hover:text-primary-foreground rounded-full font-bold text-base transition-all border-2 border-primary shadow-lg flex items-center gap-2 hover:shadow-2xl hover:scale-105 active:scale-95 min-h-[48px] min-w-[160px] justify-center"
+                className="inline-flex items-center justify-center gap-2 px-6 py-3 border border-primary text-primary hover:bg-primary hover:text-primary-foreground rounded-lg font-semibold text-sm transition-all hover:scale-105 active:scale-95 min-h-[44px]"
               >
-                <MessageCircle className="w-5 h-5" />
+                <MessageCircle className="w-4 h-4" />
                 预约沟通
               </button>
             </div>
-          </section>
-        </FadeInOnScroll>
+          </div>
+        </section>
 
-        {/* ─── Section 2: About ─── */}
+        {/* Section 2: Pain Points */}
         <FadeInOnScroll>
-          <section
-            id="about"
-            className="w-full py-8 md:py-12 px-4 border-t border-border/50 bg-secondary/5"
-          >
-            <div className="max-w-4xl mx-auto space-y-6 md:space-y-8">
-              {/* Bio */}
-              <div className="space-y-3 text-center max-w-3xl mx-auto">
-                <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground">
-                  关于我
-                </h2>
-                <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">
-                  {resumeData.personalInfo.bio}
-                </p>
-              </div>
-
-              {/* Education - summarized */}
-              <div className="space-y-4">
-                <div className="flex items-center gap-3 justify-center">
-                  <GraduationCap className="w-6 h-6 text-primary" />
-                  <h3 className="text-xl sm:text-2xl font-bold text-foreground">
-                    教育背景
-                  </h3>
-                </div>
-                <div className="grid gap-3 sm:grid-cols-3">
-                  {resumeData.education.map((edu, idx) => (
-                    <div
-                      key={idx}
-                      className="p-4 rounded-xl bg-card border border-border hover:border-primary/50 transition-colors shadow-sm text-center"
-                    >
-                      <h4 className="text-base font-bold text-card-foreground">
-                        {edu.school}
-                      </h4>
-                      <p className="text-sm text-muted-foreground mt-1">
-                        {edu.degree}
-                      </p>
-                      <span className="text-xs font-mono text-primary mt-2 block">
-                        {edu.dates}
-                      </span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              {/* Honors */}
-              <div className="space-y-4">
-                <div className="flex items-center gap-3 justify-center">
-                  <Award className="w-6 h-6 text-primary" />
-                  <h3 className="text-xl sm:text-2xl font-bold text-foreground">
-                    荣誉奖项
-                  </h3>
-                </div>
-                <div className="grid gap-2 sm:grid-cols-2">
-                  {resumeData.honors.map((honor, idx) => (
-                    <FadeInOnScroll key={idx} delay={idx * 60}>
-                      <div className="p-3 rounded-lg bg-card/50 border border-border flex items-start gap-3 min-h-[44px]">
-                        <div className="mt-1.5 w-2 h-2 rounded-full bg-primary shrink-0" />
-                        <p className="text-muted-foreground text-sm">{honor}</p>
-                      </div>
-                    </FadeInOnScroll>
-                  ))}
-                </div>
-              </div>
-            </div>
-          </section>
+          <PainPoints />
         </FadeInOnScroll>
 
-        {/* ─── Section 3: Services (InfoCards) ─── */}
+        {/* Section 3: Capabilities */}
         <FadeInOnScroll>
-          <section
-            id="services"
-            className="w-full py-8 md:py-12 px-4 border-t border-border/50"
-          >
-            <div className="max-w-4xl mx-auto space-y-6 md:space-y-8">
-              <div className="flex items-center gap-3 justify-center">
-                <Brain className="w-6 h-6 text-primary" />
-                <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground">
-                  专业领域
-                </h2>
-              </div>
-              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-                {resumeData.services.map((service, idx) => (
-                  <FadeInOnScroll key={idx} delay={idx * 100}>
-                    <InfoCard
-                      icon={serviceIconMap[service.icon] || <Brain className="w-6 h-6" />}
-                      title={service.title}
-                      description={service.desc}
-                    />
-                  </FadeInOnScroll>
-                ))}
-              </div>
-            </div>
-          </section>
+          <CapabilitiesNew />
         </FadeInOnScroll>
 
-        {/* ─── Section 4: Experience Timeline ─── */}
+        {/* Section 4: Cooperation Modes */}
+        <FadeInOnScroll>
+          <CooperationModes />
+        </FadeInOnScroll>
+
+        {/* Section 5: Experience Timeline */}
         <FadeInOnScroll>
           <section
             id="experience"
             className="w-full py-8 md:py-12 px-4 border-t border-border/50 bg-secondary/5"
           >
-            <div className="max-w-3xl mx-auto space-y-6 md:space-y-8">
-              <div className="flex items-center gap-3 justify-center">
-                <Briefcase className="w-6 h-6 text-primary" />
-                <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground">
+            <div className="max-w-2xl mx-auto space-y-6">
+              <div className="space-y-1">
+                <p className="text-xs font-semibold uppercase tracking-widest text-primary flex items-center gap-2">
+                  <Briefcase className="w-4 h-4" />
+                  工作经历
+                </p>
+                <h2 className="text-2xl sm:text-3xl font-bold text-foreground">
                   职业经历
                 </h2>
               </div>
 
-              <div className="space-y-8 sm:space-y-10 border-l-2 border-border pl-6 ml-2 sm:pl-8 sm:ml-3">
+              <div className="space-y-8 border-l-2 border-border pl-6 ml-2 sm:pl-8 sm:ml-3">
                 {resumeData.experience.map((exp, idx) => (
-                  <FadeInOnScroll key={idx} delay={idx * 120}>
+                  <FadeInOnScroll key={idx} delay={idx * 100}>
                     <ExperienceItem exp={exp} />
                   </FadeInOnScroll>
                 ))}
@@ -295,16 +218,22 @@ export default function Home(): React.ReactElement {
           </section>
         </FadeInOnScroll>
 
-        {/* ─── Section 5: Academic Output (论文与专利合并，可滑动列表) ─── */}
+        {/* Section 6: Academic Output */}
         <FadeInOnScroll>
           <section
             id="academic"
             className="w-full py-8 md:py-12 px-4 border-t border-border/50"
           >
-            <div className="max-w-3xl mx-auto">
+            <div className="max-w-2xl mx-auto">
+              <div className="space-y-1 mb-6">
+                <p className="text-xs font-semibold uppercase tracking-widest text-primary flex items-center gap-2">
+                  <FileText className="w-4 h-4" />
+                  学术产出
+                </p>
+              </div>
               <CardList
                 items={combinedAcademicItems()}
-                icon={<FileText className="w-6 h-6 text-primary" />}
+                icon={<FileText className="w-5 h-5 text-primary" />}
                 sectionTitle="论文与专利"
                 scrollable
               />
@@ -312,12 +241,6 @@ export default function Home(): React.ReactElement {
           </section>
         </FadeInOnScroll>
 
-        {/* ─── Section 6: Capabilities Matrix ─── */}
-        <div id="capabilities" className="w-full">
-          <CapabilitiesMatrix />
-        </div>
-
-        {/* Back to top */}
         <ScrollToTop />
       </div>
     </div>
