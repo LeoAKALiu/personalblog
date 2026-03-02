@@ -237,6 +237,28 @@ export default function Home(): React.ReactElement {
                 sectionTitle="论文与专利"
                 scrollable
               />
+              <div className="mt-4 space-y-1 text-sm text-muted-foreground">
+                <p>
+                  更多成果请访问：
+                  <a
+                    href="https://scholar.google.com/citations?user=kpD5uBcAAAAJ&hl=zh-TW"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-primary hover:underline ml-1"
+                  >
+                    Google Scholar
+                  </a>
+                  <span className="mx-1">·</span>
+                  <a
+                    href="https://au.cnki.net/author/personalInfo/000043523348"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-primary hover:underline"
+                  >
+                    中国知网
+                  </a>
+                </p>
+              </div>
             </div>
           </section>
         </FadeInOnScroll>
