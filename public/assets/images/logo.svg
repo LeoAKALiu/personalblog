@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 232">
+  <!-- Full logo: LB mark + wordmark "AI RESEARCH LAB" -->
+  <rect x="18" y="18" width="14" height="150" fill="#111"/>
+  <rect x="18" y="168" width="148" height="14" fill="#111"/>
+  <g stroke="#1a2761" stroke-width="8" stroke-linecap="round" fill="none">
+    <line x1="32" y1="46"  x2="120" y2="46"/>
+    <line x1="32" y1="108" x2="68"  y2="108"/>
+    <line x1="68" y1="46"  x2="68"  y2="162"/>
+    <line x1="120" y1="46"  x2="144" y2="77"/>
+    <line x1="68"  y1="108" x2="144" y2="77"/>
+    <line x1="68"  y1="108" x2="144" y2="135"/>
+    <line x1="144" y1="135" x2="68"  y2="162"/>
+  </g>
+  <g fill="#1a2761">
+    <circle cx="68"  cy="46"  r="10"/>
+    <circle cx="120" cy="46"  r="10"/>
+    <circle cx="68"  cy="108" r="10"/>
+    <circle cx="144" cy="77"  r="10"/>
+    <circle cx="144" cy="135" r="10"/>
+    <circle cx="68"  cy="162" r="10"/>
+  </g>
+  <text
+    x="100" y="215"
+    text-anchor="middle"
+    font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif"
+    font-size="13"
+    font-weight="300"
+    letter-spacing="4.5"
+    fill="#333"
+  >AI RESEARCH LAB</text>
+</svg>

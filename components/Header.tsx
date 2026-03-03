@@ -7,6 +7,7 @@ import { useState, useEffect, useCallback } from "react";
 import { clsx, type ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
 import { ModeToggle } from "@/components/mode-toggle";
+import { LogoMark } from "@/components/LogoMark";
 
 function cn(...inputs: ClassValue[]): string {
   return twMerge(clsx(inputs));
@@ -87,9 +88,9 @@ export function Header(): React.ReactElement {
       <nav className="bg-background/95 border-b border-border">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
-            {/* Logo */}
-            <Link href="/" className="text-xl font-bold text-foreground shrink-0">
-              Liu Bo<span className="text-primary">.Xin</span>
+            {/* Logo mark */}
+            <Link href="/" className="flex items-center gap-2.5 shrink-0 group">
+              <LogoMark className="h-9 w-9 text-foreground transition-opacity group-hover:opacity-80" />
             </Link>
 
             {/* Desktop page links */}

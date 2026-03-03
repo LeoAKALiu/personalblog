@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+  <!--
+  {
+    "strokeWidth": 8,
+    "nodeRadius": 10,
+    "grid": 66,
+    "padding": 18,
+    "navyColor": "#1a2761",
+    "blackColor": "#111111"
+  }
+  Nodes: N1(68,46) N2(120,46) N3(68,108) N4(144,77) N5(144,135) N6(68,162)
+  -->
+  <rect x="18" y="18" width="14" height="150" fill="#111"/>
+  <rect x="18" y="168" width="148" height="14" fill="#111"/>
+  <g stroke="#1a2761" stroke-width="8" stroke-linecap="round" fill="none">
+    <line x1="32" y1="46"  x2="120" y2="46"/>
+    <line x1="32" y1="108" x2="68"  y2="108"/>
+    <line x1="68" y1="46"  x2="68"  y2="162"/>
+    <line x1="120" y1="46"  x2="144" y2="77"/>
+    <line x1="68"  y1="108" x2="144" y2="77"/>
+    <line x1="68"  y1="108" x2="144" y2="135"/>
+    <line x1="144" y1="135" x2="68"  y2="162"/>
+  </g>
+  <g fill="#1a2761">
+    <circle cx="68"  cy="46"  r="10"/>
+    <circle cx="120" cy="46"  r="10"/>
+    <circle cx="68"  cy="108" r="10"/>
+    <circle cx="144" cy="77"  r="10"/>
+    <circle cx="144" cy="135" r="10"/>
+    <circle cx="68"  cy="162" r="10"/>
+  </g>
+</svg>
