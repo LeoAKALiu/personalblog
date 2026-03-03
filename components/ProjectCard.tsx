@@ -261,14 +261,19 @@ export function ProjectCard({ project }: ProjectCardProps) {
                     </div>
                   </div>
                   {project.demoUrl && (
-                    <a
-                      href={project.demoUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="w-full flex justify-center items-center gap-2 px-4 py-2 bg-primary text-primary-foreground rounded-lg font-medium hover:bg-primary/90 transition-colors"
-                    >
-                      打开预览 <ExternalLink className="w-4 h-4" />
-                    </a>
+                    <div className="space-y-1.5">
+                      <a
+                        href={project.demoUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="w-full flex justify-center items-center gap-2 px-4 py-2 bg-primary text-primary-foreground rounded-lg font-medium hover:bg-primary/90 transition-colors"
+                      >
+                        打开预览 <ExternalLink className="w-4 h-4" />
+                      </a>
+                      <p className="text-center text-xs text-muted-foreground">
+                        电脑端浏览效果更佳
+                      </p>
+                    </div>
                   )}
                 </div>
               </div>
