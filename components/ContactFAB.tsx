@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useRef, useEffect } from "react";
-import { MessageCircle, X, Mail, Phone, User } from "lucide-react";
+import { MessageCircle, X, Mail, Phone } from "lucide-react";
 import { resumeData } from "@/data/resume";
 
 export function ContactFAB() {
@@ -87,16 +87,17 @@ export function ContactFAB() {
               </div>
             </a>
 
-            {/* WeChat (same as phone) */}
-            <div className="flex items-center gap-3 p-2.5 rounded-lg">
-              <div className="w-9 h-9 rounded-full bg-green-500/10 flex items-center justify-center text-green-600 shrink-0">
-                <User className="w-4 h-4" />
-              </div>
-              <div className="min-w-0">
-                <p className="text-xs text-muted-foreground">微信</p>
-                <p className="text-sm text-foreground">
-                  {resumeData.personalInfo.phone}
-                </p>
+            {/* WeChat QR code */}
+            <div className="space-y-2 pt-1">
+              <p className="text-xs text-muted-foreground px-2.5">微信扫码联系</p>
+              <div className="flex justify-center">
+                <img
+                  src="/assets/images/wechat-qr.jpg"
+                  alt="微信二维码"
+                  width={160}
+                  height={160}
+                  className="rounded-xl border border-border"
+                />
               </div>
             </div>
           </div>

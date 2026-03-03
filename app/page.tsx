@@ -226,8 +226,7 @@ export default function Home(): React.ReactElement {
           >
             <div className="max-w-2xl mx-auto">
               <div className="space-y-1 mb-6">
-                <p className="text-xs font-semibold uppercase tracking-widest text-primary flex items-center gap-2">
-                  <FileText className="w-4 h-4" />
+                <p className="text-xs font-semibold uppercase tracking-widest text-primary">
                   学术产出
                 </p>
               </div>
