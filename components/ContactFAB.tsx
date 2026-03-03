@@ -92,11 +92,11 @@ export function ContactFAB() {
               <p className="text-xs text-muted-foreground px-2.5">微信扫码联系</p>
               <div className="flex justify-center">
                 <img
-                  src="/assets/images/wechat-qr.jpg"
+                  src="/assets/images/IMG_2190.jpg"
                   alt="微信二维码"
-                  width={160}
-                  height={160}
-                  className="rounded-xl border border-border"
+                  width={200}
+                  height={200}
+                  className="rounded-xl border border-border w-[200px] h-[200px] object-contain"
                 />
               </div>
             </div>
