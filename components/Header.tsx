@@ -19,13 +19,13 @@ const pageLinks = [
   { name: "解决方案", href: "/projects" },
 ];
 
-/** Section anchors shown only on the home page */
+/** Section anchors shown only on the home page — must match IDs in app/page.tsx */
 const sectionLinks = [
-  { id: "about", label: "关于我" },
-  { id: "services", label: "专业领域" },
+  { id: "problems", label: "行业断层" },
+  { id: "capabilities", label: "核心能力" },
+  { id: "cooperation", label: "合作方式" },
   { id: "experience", label: "职业经历" },
   { id: "academic", label: "学术成果" },
-  { id: "capabilities", label: "能力矩阵" },
 ];
 
 /**
