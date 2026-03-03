@@ -34,6 +34,12 @@ export const resumeData = {
     location: "中国上海",
     bio: "致力于填补学术研究与工业应用之间的鸿沟。我专注于将最前沿的计算机视觉与深度学习技术，转化为建筑行业真正可落地、更安全、更高效的解决方案。",
     avatarUrl: "/assets/images/avatar.jpg",
+    /** Three credentials highlighted on the homepage */
+    highlightCredentials: [
+      "同济大学智能建造博士",
+      "注册土木工程师（岩土）",
+      "山东省博士（后）创新创业大赛银奖",
+    ],
   },
   /** Three industry pain points — problem-driven narrative */
   painPoints: [

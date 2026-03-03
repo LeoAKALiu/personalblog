@@ -155,6 +155,18 @@ export default function Home(): React.ReactElement {
               ))}
             </div>
 
+            {/* Highlight credentials */}
+            <div className="flex flex-wrap gap-2 justify-center sm:justify-start">
+              {resumeData.personalInfo.highlightCredentials?.map((label, i) => (
+                <span
+                  key={i}
+                  className="inline-flex items-center px-3 py-1.5 rounded-lg text-sm font-medium bg-primary/10 text-primary border border-primary/20"
+                >
+                  {label}
+                </span>
+              ))}
+            </div>
+
             {/* CTAs */}
             <div className="flex flex-col sm:flex-row gap-3 pt-2">
               <a

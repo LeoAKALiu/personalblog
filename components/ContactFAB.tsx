@@ -91,8 +91,9 @@ export function ContactFAB() {
             <div className="space-y-2 pt-1">
               <p className="text-xs text-muted-foreground px-2.5">微信扫码联系</p>
               <div className="flex justify-center">
+                {/* v=2 cache-bust so updated QR image loads after deploy */}
                 <img
-                  src="/assets/images/IMG_2190.jpg"
+                  src="/assets/images/IMG_2190.jpg?v=2"
                   alt="微信二维码"
                   width={200}
                   height={200}
