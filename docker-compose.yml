@@ -5,10 +5,12 @@ services:
     restart: always
     environment:
       - NODE_ENV=production
+      # Cap Node heap so container stays under limit; 1280MB heap + ~256MB overhead fits 1.5G
+      - NODE_OPTIONS=--max-old-space-size=1280
     deploy:
       resources:
         limits:
-          memory: 1G
+          memory: 1536M
     ports:
       - "3000:3000"
     expose:
