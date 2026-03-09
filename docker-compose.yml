@@ -17,6 +17,12 @@ services:
       - "3000"
     networks:
       - nginx-proxy-manage_default
+    healthcheck:
+      test: ["CMD", "wget", "-q", "-O", "/dev/null", "http://localhost:3000/api/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
 
 networks:
   nginx-proxy-manage_default:
