@@ -1,0 +1,23 @@
+# systemd unit for personal blog (Next.js) — bare-metal run with crash restart
+# Install: sudo cp deploy/personalblog.service /etc/systemd/system/
+#         sudo systemctl daemon-reload && sudo systemctl enable --now personalblog
+# Adjust WorkingDirectory and User if needed.
+# For standalone deploy (server.js in app dir), use: ExecStart=/usr/bin/node server.js
+
+[Unit]
+Description=Personal Blog (Next.js)
+After=network.target
+
+[Service]
+Type=simple
+User=www-data
+Group=www-data
+WorkingDirectory=/var/www/personalblog
+Environment=NODE_ENV=production
+Environment=PORT=3000
+ExecStart=/usr/bin/npm start
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
