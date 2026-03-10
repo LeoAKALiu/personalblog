@@ -1,0 +1,36 @@
+# Nginx 反代示例：将 liubo.xin 的 80/443 转到本机 3000（personalblog）
+# 用法：复制到 /etc/nginx/conf.d/ 并改 server_name / 证书路径，然后 nginx -t && systemctl reload nginx
+# 若仅用 Cloudflare Flexible，可只保留 listen 80 的 server；若用 Full( strict )，需配置 ssl 并 listen 443。
+
+# HTTP → 后端 3000（Cloudflare Flexible 时，CF 回源连此 80）
+server {
+    listen 80;
+    server_name liubo.xin www.liubo.xin;
+
+    location / {
+        proxy_pass http://127.0.0.1:3000;
+        proxy_http_version 1.1;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+    }
+}
+
+# HTTPS（可选：源站自签或 Let's Encrypt，Cloudflare Full/Full strict 时用）
+# server {
+#     listen 443 ssl http2;
+#     server_name liubo.xin www.liubo.xin;
+#
+#     ssl_certificate     /path/to/fullchain.pem;
+#     ssl_certificate_key /path/to/privkey.pem;
+#
+#     location / {
+#         proxy_pass http://127.0.0.1:3000;
+#         proxy_http_version 1.1;
+#         proxy_set_header Host $host;
+#         proxy_set_header X-Real-IP $remote_addr;
+#         proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+#         proxy_set_header X-Forwarded-Proto $scheme;
+#     }
+# }
