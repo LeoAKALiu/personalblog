@@ -5,7 +5,6 @@ services:
     restart: always
     environment:
       - NODE_ENV=production
-      # Cap Node heap so container stays under limit; 1280MB heap + ~256MB overhead fits 1.5G
       - NODE_OPTIONS=--max-old-space-size=1280
     deploy:
       resources:
@@ -16,7 +15,8 @@ services:
     expose:
       - "3000"
     networks:
-      - nginx-proxy-manage_default
+      nginx-proxy-manage_default:
+        ipv4_address: 172.18.0.10
     healthcheck:
       test: ["CMD", "wget", "-q", "-O", "/dev/null", "http://localhost:3000/api/health"]
       interval: 30s

@@ -16,6 +16,7 @@ import { SideNav } from "@/components/SideNav";
 import { PainPoints } from "@/components/PainPoints";
 import { CapabilitiesNew } from "@/components/CapabilitiesNew";
 import { CooperationModes } from "@/components/CooperationModes";
+import { SpeakingSection } from "@/components/SpeakingSection";
 import { useState } from "react";
 import React from "react";
 
@@ -202,7 +203,12 @@ export default function Home(): React.ReactElement {
           <CooperationModes />
         </FadeInOnScroll>
 
-        {/* Section 5: Experience Timeline */}
+        {/* Section 5: Speaking / Invited Talks */}
+        <FadeInOnScroll>
+          <SpeakingSection />
+        </FadeInOnScroll>
+
+        {/* Section 6: Experience Timeline */}
         <FadeInOnScroll>
           <section
             id="experience"

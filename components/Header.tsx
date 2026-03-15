@@ -24,6 +24,7 @@ const sectionLinks = [
   { id: "problems", label: "行业断层" },
   { id: "capabilities", label: "核心能力" },
   { id: "cooperation", label: "合作方式" },
+  { id: "speaking", label: "行业分享与受邀演讲" },
   { id: "experience", label: "职业经历" },
   { id: "academic", label: "学术成果" },
 ];

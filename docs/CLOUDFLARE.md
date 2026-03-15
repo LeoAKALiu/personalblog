@@ -2,6 +2,8 @@
 
 **要恢复 https://liubo.xin 外网访问**：请按 **[deploy/RESTORE-ACCESS.md](../deploy/RESTORE-ACCESS.md)** 中的步骤依次完成（源站起应用 → 反代 80/443 → Cloudflare DNS+SSL → 防火墙 → 验证）。
 
+**若外网访问很慢或 HTTPS 像“无证书”**：源站在国内且使用 Cloudflare 代理（橙云）时，流量会经海外节点再回源，延迟很高。建议在 Cloudflare **DNS → Records** 中将 `liubo.xin` 与 `www` 两条 A 记录的代理状态改为 **仅 DNS（灰云）**，直连源站；源站已配 Let's Encrypt + NPM 强制 HTTPS 即可。
+
 当把 liubo.xin 的 DNS 解析切到 Cloudflare 后若出现 **无法访问**（如浏览器报 ERR_CONNECTION_CLOSED），多半是 Cloudflare 到源站的连接或 SSL 配置问题，而不是本站应用逻辑问题。按下面顺序排查。
 
 ## 1. 确认请求是否到达源站
