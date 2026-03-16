@@ -8,6 +8,7 @@ import { clsx, type ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
 import { ModeToggle } from "@/components/mode-toggle";
 import { LogoMark } from "@/components/LogoMark";
+import { motion } from "framer-motion";
 
 function cn(...inputs: ClassValue[]): string {
   return twMerge(clsx(inputs));
@@ -85,30 +86,48 @@ export function Header(): React.ReactElement {
   return (
     <header className="fixed w-full z-50 transition-all duration-300">
       {/* Primary nav bar */}
-      <nav className="bg-background/95 border-b border-border">
+      <motion.nav
+        className="border-b border-border/40 bg-background/70 backdrop-blur-xl"
+        initial={{ opacity: 0, y: -12 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, ease: "easeOut" }}
+      >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
             {/* Logo mark */}
             <Link href="/" className="flex items-center gap-2.5 shrink-0 group">
-              <LogoMark className="h-9 w-9 text-foreground transition-opacity group-hover:opacity-80" />
+              <LogoMark className="h-9 w-9 text-foreground transition-transform duration-300 group-hover:scale-105 group-hover:drop-shadow-[0_0_18px_rgba(56,189,248,0.55)]" />
             </Link>
 
             {/* Desktop page links */}
             <div className="hidden md:flex items-center space-x-4">
-              {pageLinks.map((item) => (
-                <Link
-                  key={item.name}
-                  href={item.href}
-                  className={cn(
-                    "px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200 min-h-[44px] flex items-center",
-                    pathname === item.href
-                      ? "text-primary bg-accent"
-                      : "text-muted-foreground hover:text-foreground hover:bg-accent"
-                  )}
-                >
-                  {item.name}
-                </Link>
-              ))}
+              <div className="relative flex items-center gap-1 rounded-full bg-secondary/60 px-1 py-1">
+                {pageLinks.map((item) => {
+                  const isActive = pathname === item.href;
+                  return (
+                    <button
+                      key={item.name}
+                      type="button"
+                      onClick={() => window.location.assign(item.href)}
+                      className={cn(
+                        "relative px-3 py-1.5 rounded-full text-sm font-medium min-h-[36px] flex items-center transition-colors duration-200",
+                        isActive
+                          ? "text-primary-foreground"
+                          : "text-muted-foreground hover:text-foreground"
+                      )}
+                    >
+                      {isActive && (
+                        <motion.span
+                          layoutId="nav-pill"
+                          className="absolute inset-0 rounded-full bg-gradient-to-r from-primary to-accent -z-10"
+                          transition={{ type: "spring", stiffness: 360, damping: 30 }}
+                        />
+                      )}
+                      {item.name}
+                    </button>
+                  );
+                })}
+              </div>
               <div className="pl-2 border-l border-border ml-2">
                 <ModeToggle />
               </div>
@@ -131,7 +150,7 @@ export function Header(): React.ReactElement {
             </div>
           </div>
         </div>
-      </nav>
+      </motion.nav>
 
       {/* Mobile menu */}
       {mobileOpen && (

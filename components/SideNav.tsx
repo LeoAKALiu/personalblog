@@ -2,6 +2,7 @@
 
 import { useEffect, useState, useCallback } from "react";
 import { clsx } from "clsx";
+import { motion } from "framer-motion";
 
 /** Section anchors for homepage scroll-spy */
 const sectionLinks = [
@@ -60,21 +61,32 @@ export function SideNav(): React.ReactElement {
         <p className="px-3 mb-3 text-xs font-semibold text-muted-foreground uppercase tracking-wider">
           本页导航
         </p>
-        {sectionLinks.map(({ id, label }) => (
-          <button
-            key={id}
-            type="button"
-            onClick={() => scrollToSection(id)}
-            className={clsx(
-              "w-full text-left px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200",
-              activeSection === id
-                ? "text-primary bg-primary/10 border-l-2 border-primary"
-                : "text-muted-foreground hover:text-foreground hover:bg-accent border-l-2 border-transparent"
-            )}
-          >
-            {label}
-          </button>
-        ))}
+        {sectionLinks.map(({ id, label }) => {
+          const isActive: boolean = activeSection === id;
+          return (
+            <motion.button
+              key={id}
+              type="button"
+              onClick={() => scrollToSection(id)}
+              className={clsx(
+                "relative w-full text-left px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200 overflow-hidden",
+                isActive
+                  ? "text-primary"
+                  : "text-muted-foreground hover:text-foreground hover:bg-accent/40"
+              )}
+              whileHover={{ x: 2 }}
+            >
+              {isActive && (
+                <motion.span
+                  layoutId="sidenav-indicator"
+                  className="absolute left-0 top-1 bottom-1 w-[3px] rounded-full bg-gradient-to-b from-primary to-accent"
+                  transition={{ type: "spring", stiffness: 360, damping: 30 }}
+                />
+              )}
+              <span className="pl-2">{label}</span>
+            </motion.button>
+          );
+        })}
       </nav>
     </aside>
   );

@@ -3,64 +3,66 @@
 @plugin "@tailwindcss/typography";
 
 :root {
-  --background: 0 0% 100%;
-  --foreground: 222.2 84% 4.9%;
+  /* Light theme – tech-forward, professional */
+  --background: 210 20% 98%; /* off-white with slight cool tint */
+  --foreground: 225 25% 12%; /* rich near-black for headings */
 
   --card: 0 0% 100%;
-  --card-foreground: 222.2 84% 4.9%;
+  --card-foreground: 225 20% 15%;
 
   --popover: 0 0% 100%;
-  --popover-foreground: 222.2 84% 4.9%;
+  --popover-foreground: 225 25% 12%;
 
-  --primary: 221.2 83.2% 53.3%;
+  --primary: 230 75% 55%; /* deep indigo-blue */
   --primary-foreground: 210 40% 98%;
 
-  --secondary: 210 40% 96.1%;
-  --secondary-foreground: 222.2 47.4% 11.2%;
+  --secondary: 220 20% 96%; /* soft cool gray for subtle surfaces */
+  --secondary-foreground: 225 25% 20%;
 
-  --muted: 210 40% 96.1%;
-  --muted-foreground: 215.4 16.3% 46.9%;
+  --muted: 220 18% 94%;
+  --muted-foreground: 225 15% 40%;
 
-  --accent: 210 40% 96.1%;
-  --accent-foreground: 222.2 47.4% 11.2%;
+  --accent: 175 70% 45%; /* teal/cyan accent */
+  --accent-foreground: 210 40% 98%;
 
-  --destructive: 0 84.2% 60.2%;
+  --destructive: 0 72% 55%;
   --destructive-foreground: 210 40% 98%;
 
-  --border: 214.3 31.8% 91.4%;
-  --input: 214.3 31.8% 91.4%;
-  --ring: 221.2 83.2% 53.3%;
-  --radius: 0.5rem;
+  --border: 220 18% 88%;
+  --input: 220 18% 88%;
+  --ring: 230 75% 55%;
+  --radius: 0.75rem;
 }
 
 .dark {
-  --background: 222.2 84% 4.9%;
-  --foreground: 210 40% 98%;
- 
-  --card: 222.2 84% 4.9%;
-  --card-foreground: 210 40% 98%;
- 
-  --popover: 222.2 84% 4.9%;
-  --popover-foreground: 210 40% 98%;
- 
-  --primary: 217.2 91.2% 59.8%;
-  --primary-foreground: 222.2 47.4% 11.2%;
- 
-  --secondary: 217.2 32.6% 17.5%;
-  --secondary-foreground: 210 40% 98%;
- 
-  --muted: 217.2 32.6% 17.5%;
-  --muted-foreground: 215 20.2% 65.1%;
- 
-  --accent: 217.2 32.6% 17.5%;
-  --accent-foreground: 210 40% 98%;
- 
-  --destructive: 0 62.8% 30.6%;
+  /* Dark theme – deep navy charcoal */
+  --background: 225 30% 8%;
+  --foreground: 220 15% 90%;
+
+  --card: 225 25% 12%;
+  --card-foreground: 220 18% 92%;
+
+  --popover: 225 30% 10%;
+  --popover-foreground: 220 15% 90%;
+
+  --primary: 230 85% 65%;
+  --primary-foreground: 222 47% 11%;
+
+  --secondary: 225 22% 16%;
+  --secondary-foreground: 220 15% 90%;
+
+  --muted: 225 20% 18%;
+  --muted-foreground: 215 15% 70%;
+
+  --accent: 175 75% 55%;
+  --accent-foreground: 222 47% 11%;
+
+  --destructive: 0 62% 45%;
   --destructive-foreground: 210 40% 98%;
- 
-  --border: 217.2 32.6% 17.5%;
-  --input: 217.2 32.6% 17.5%;
-  --ring: 212.7 26.8% 83.9%;
+
+  --border: 225 22% 26%;
+  --input: 225 22% 26%;
+  --ring: 230 85% 65%;
 }
 
 @theme {
@@ -133,21 +135,50 @@ html {
   }
 }
 
-/* Fade-in animation for scroll reveal */
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(1rem);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
 body {
   overflow-x: hidden;
   overscroll-behavior-y: none;
+}
+
+/* Global tech background: dot grid + subtle noise + gradient orbs */
+body::before,
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: -2;
+}
+
+body::before {
+  /* Dot grid pattern */
+  background-image:
+    radial-gradient(circle at 1px 1px, hsl(var(--border) / 0.6) 1px, transparent 0);
+  background-size: 24px 24px;
+  opacity: 0.55;
+}
+
+body::after {
+  /* Gradient orbs – light/dark adapt via vars */
+  background:
+    radial-gradient(circle at 10% 0%, hsl(var(--primary) / 0.20) 0, transparent 55%),
+    radial-gradient(circle at 90% 10%, hsl(var(--accent) / 0.20) 0, transparent 55%),
+    radial-gradient(circle at 50% 100%, hsl(var(--primary) / 0.18) 0, transparent 60%);
+  opacity: 0.9;
+  filter: blur(0.5px);
+  animation: float-orbs 24s ease-in-out infinite alternate;
+}
+
+@keyframes float-orbs {
+  0% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(0, -12px, 0) scale(1.02);
+  }
+  100% {
+    transform: translate3d(0, 6px, 0) scale(1.04);
+  }
 }
 
 /* Safe area for phones with bottom bars (iPhone notch, etc.) */
@@ -162,4 +193,11 @@ body {
   @media (width >= 1400px) {
     max-width: 1400px;
   }
+}
+
+/* Glass-morphism helper for key surfaces */
+.glass-surface {
+  background-color: hsl(var(--card) / 0.82);
+  border: 1px solid hsl(var(--border) / 0.7);
+  backdrop-filter: blur(18px);
 }

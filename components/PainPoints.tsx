@@ -1,5 +1,6 @@
 import React from "react";
 import { resumeData } from "@/data/resume";
+import { motion } from "framer-motion";
 
 /**
  * Three-column problem-driven card grid for the homepage.
@@ -23,12 +24,13 @@ export function PainPoints(): React.ReactElement {
 
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-5">
           {resumeData.painPoints.map((point, idx) => (
-            <div
+            <motion.div
               key={idx}
-              className="space-y-3 p-5 rounded-xl border border-border bg-card"
+              className="space-y-3 p-5 rounded-xl glass-surface shadow-sm hover:shadow-lg hover:shadow-primary/15 transition-all"
+              whileHover={{ y: -3 }}
             >
-              <div className="w-8 h-8 rounded-md bg-primary/10 flex items-center justify-center">
-                <span className="text-primary font-bold text-sm">
+              <div className="w-9 h-9 rounded-lg bg-gradient-to-br from-primary to-accent flex items-center justify-center text-primary-foreground shadow-md shadow-primary/40">
+                <span className="font-bold text-xs">
                   {String(idx + 1).padStart(2, "0")}
                 </span>
               </div>
@@ -38,7 +40,7 @@ export function PainPoints(): React.ReactElement {
               <p className="text-sm text-muted-foreground leading-relaxed">
                 {point.body}
               </p>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>

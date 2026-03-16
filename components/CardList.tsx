@@ -1,4 +1,5 @@
 import { ExternalLink } from "lucide-react";
+import { motion } from "framer-motion";
 
 /**
  * Patent subtype for tag display (two colors).
@@ -69,9 +70,10 @@ export function CardList({
   const listContent = (
     <div className="space-y-4">
       {items.map((item, idx) => (
-        <div
+        <motion.div
           key={idx}
-          className="p-4 sm:p-5 bg-card border border-border rounded-xl hover:border-border/80 transition-colors shadow-sm"
+          className="p-4 sm:p-5 bg-card/90 border border-border rounded-xl hover:border-primary/40 transition-all shadow-sm hover:shadow-lg hover:shadow-primary/10"
+          whileHover={{ y: -2 }}
         >
           <div className="flex flex-wrap items-center gap-2 mb-2">
             <span
@@ -110,7 +112,8 @@ export function CardList({
               </a>
             )}
           </div>
-        ))}
+        </motion.div>
+      ))}
     </div>
   );
 

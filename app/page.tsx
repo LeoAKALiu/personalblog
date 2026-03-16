@@ -133,7 +133,7 @@ export default function Home(): React.ReactElement {
             </div>
 
             {/* H1 */}
-            <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight text-foreground leading-snug">
+            <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight leading-snug bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent">
               {resumeData.personalInfo.tagline}
             </h1>
 
@@ -160,7 +160,7 @@ export default function Home(): React.ReactElement {
               {resumeData.personalInfo.highlightCredentials?.map((label, i) => (
                 <span
                   key={i}
-                  className="inline-flex items-center px-3 py-1.5 rounded-lg text-sm font-medium bg-primary/10 text-primary border border-primary/20"
+                  className="inline-flex items-center px-3 py-1.5 rounded-lg text-sm font-medium glass-surface shadow-sm shadow-primary/10"
                 >
                   {label}
                 </span>
@@ -171,14 +171,14 @@ export default function Home(): React.ReactElement {
             <div className="flex flex-col sm:flex-row gap-3 pt-2">
               <a
                 href="/projects"
-                className="group inline-flex items-center justify-center gap-2 px-6 py-3 bg-primary hover:bg-primary/90 text-primary-foreground rounded-lg font-semibold text-sm transition-all hover:scale-105 active:scale-95 min-h-[44px] shadow-lg shadow-primary/20"
+                className="group inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg font-semibold text-sm transition-all hover:scale-105 active:scale-95 min-h-[44px] shadow-lg shadow-primary/30 bg-gradient-to-r from-primary to-accent text-primary-foreground"
               >
                 查看代表性案例
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
               </a>
               <button
                 onClick={openContact}
-                className="inline-flex items-center justify-center gap-2 px-6 py-3 border border-primary text-primary hover:bg-primary hover:text-primary-foreground rounded-lg font-semibold text-sm transition-all hover:scale-105 active:scale-95 min-h-[44px]"
+                className="inline-flex items-center justify-center gap-2 px-6 py-3 border border-primary/60 text-primary hover:bg-primary hover:text-primary-foreground rounded-lg font-semibold text-sm transition-all hover:scale-105 active:scale-95 min-h-[44px] bg-background/60"
               >
                 <MessageCircle className="w-4 h-4" />
                 预约沟通

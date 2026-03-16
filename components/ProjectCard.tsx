@@ -4,6 +4,7 @@ import { useState } from "react";
 import { ExternalLink, Maximize2, X, Play, ImageIcon } from "lucide-react";
 import { clsx } from "clsx";
 import NextImage from "next/image";
+import { motion, AnimatePresence } from "framer-motion";
 
 export interface ProjectItem {
   title: string;
@@ -64,7 +65,10 @@ export function ProjectCard({ project }: ProjectCardProps) {
 
   return (
     <>
-      <article className="group relative bg-card border border-border rounded-xl overflow-hidden hover:border-primary/50 transition-all duration-300 shadow-sm flex flex-col sm:flex-row min-h-[200px]">
+      <motion.article
+        className="group relative bg-card border border-border rounded-xl overflow-hidden hover:border-primary/50 transition-all duration-300 shadow-sm flex flex-col sm:flex-row min-h-[200px]"
+        whileHover={{ y: -3 }}
+      >
         {/* Left: Thumbnail */}
         <div className="sm:w-56 md:w-64 shrink-0 h-44 sm:h-auto sm:min-h-[220px] bg-muted relative flex items-center justify-center overflow-hidden">
           <div className="absolute inset-0 bg-gradient-to-br from-muted to-background/50" />
@@ -150,17 +154,29 @@ export function ProjectCard({ project }: ProjectCardProps) {
             ))}
           </div>
         </div>
-      </article>
+      </motion.article>
 
       {/* Modal: full case study */}
-      {isModalOpen && (
-        <div className="fixed inset-0 z-[100] flex items-end sm:items-center justify-center p-0 sm:p-4 md:p-6">
-          <div
-            className="absolute inset-0 bg-background/80"
-            onClick={() => setIsModalOpen(false)}
-            aria-hidden
-          />
-          <div className="relative w-full sm:max-w-5xl bg-card rounded-t-2xl sm:rounded-2xl border border-border shadow-2xl flex flex-col max-h-screen sm:max-h-[90vh] overflow-hidden animate-in fade-in slide-in-from-bottom-4 sm:zoom-in duration-200">
+      <AnimatePresence>
+        {isModalOpen && (
+          <motion.div
+            className="fixed inset-0 z-[100] flex items-end sm:items-center justify-center p-0 sm:p-4 md:p-6"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+          >
+            <div
+              className="absolute inset-0 bg-background/80"
+              onClick={() => setIsModalOpen(false)}
+              aria-hidden
+            />
+            <motion.div
+              className="relative w-full sm:max-w-5xl bg-card rounded-t-2xl sm:rounded-2xl border border-border shadow-2xl flex flex-col max-h-screen sm:max-h-[90vh] overflow-hidden"
+              initial={{ opacity: 0, y: 40, scale: 0.96 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              exit={{ opacity: 0, y: 40, scale: 0.96 }}
+              transition={{ duration: 0.22, ease: "easeOut" }}
+            >
             <div className="flex items-center justify-between p-3 sm:p-4 border-b border-border">
               <h3 className="text-base sm:text-xl font-bold text-card-foreground truncate pr-2">
                 {project.title}
@@ -277,10 +293,10 @@ export function ProjectCard({ project }: ProjectCardProps) {
                   )}
                 </div>
               </div>
-            </div>
-          </div>
-        </div>
-      )}
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </>
   );
 }

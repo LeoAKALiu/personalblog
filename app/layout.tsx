@@ -5,8 +5,27 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { ContactFAB } from "@/components/ContactFAB";
 import { resumeData } from "@/data/resume";
+import { Inter, JetBrains_Mono, Plus_Jakarta_Sans } from "next/font/google";
 
 const SITE_URL: string = "https://liubo.xin";
+
+const displayFont = Plus_Jakarta_Sans({
+  subsets: ["latin"],
+  weight: ["500", "600", "700", "800"],
+  variable: "--font-display",
+});
+
+const bodyFont = Inter({
+  subsets: ["latin"],
+  weight: ["400", "500"],
+  variable: "--font-body",
+});
+
+const monoFont = JetBrains_Mono({
+  subsets: ["latin"],
+  weight: ["400", "500", "600"],
+  variable: "--font-mono",
+});
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -79,7 +98,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="zh-CN" suppressHydrationWarning>
-      <body className={`font-sans bg-background text-foreground antialiased min-h-screen flex flex-col`}>
+      <body
+        className={`${displayFont.variable} ${bodyFont.variable} ${monoFont.variable} font-sans bg-background text-foreground antialiased min-h-screen flex flex-col`}
+      >
         <ThemeProvider
           attribute="class"
           defaultTheme="system"

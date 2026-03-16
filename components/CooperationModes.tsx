@@ -1,5 +1,6 @@
 import React from "react";
 import { resumeData } from "@/data/resume";
+import { motion } from "framer-motion";
 
 /**
  * Four cooperation mode cards in a 2×2 grid.
@@ -23,17 +24,21 @@ export function CooperationModes(): React.ReactElement {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           {resumeData.cooperationModes.map((mode, idx) => (
-            <div
+            <motion.div
               key={idx}
-              className="p-5 rounded-xl border border-border bg-card hover:border-primary/40 transition-colors space-y-2"
+              className="p-5 rounded-xl glass-surface space-y-2 hover:shadow-lg hover:shadow-primary/15 transition-all border border-border/60"
+              whileHover={{ y: -2 }}
             >
+              <div className="inline-flex items-center gap-2 rounded-full bg-primary/10 px-3 py-1 text-xs font-medium text-primary mb-1.5">
+                <span>{idx + 1}</span>
+              </div>
               <h3 className="font-semibold text-foreground text-base">
                 {mode.title}
               </h3>
               <p className="text-sm text-muted-foreground leading-relaxed">
                 {mode.desc}
               </p>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>

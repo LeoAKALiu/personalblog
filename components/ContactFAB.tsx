@@ -1,10 +1,11 @@
-"use client";
+ "use client";
 
 import { useState, useRef, useEffect } from "react";
 import { MessageCircle, X, Mail, Phone } from "lucide-react";
 import { resumeData } from "@/data/resume";
+import { AnimatePresence, motion } from "framer-motion";
 
-export function ContactFAB() {
+export function ContactFAB(): React.ReactElement {
   const [isOpen, setIsOpen] = useState(false);
   const panelRef = useRef<HTMLDivElement>(null);
   const buttonRef = useRef<HTMLButtonElement>(null);
@@ -38,11 +39,16 @@ export function ContactFAB() {
   return (
     <div className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-50 flex flex-col items-end gap-3">
       {/* Contact Card */}
-      {isOpen && (
-        <div
-          ref={panelRef}
-          className="w-[calc(100vw-3rem)] sm:w-72 bg-card border border-border rounded-2xl shadow-2xl p-5 space-y-4 animate-in fade-in slide-in-from-bottom-2 duration-200"
-        >
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            ref={panelRef}
+            className="w-[calc(100vw-3rem)] sm:w-72 glass-surface rounded-2xl shadow-2xl p-5 space-y-4"
+            initial={{ opacity: 0, y: 20, scale: 0.98 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: 20, scale: 0.98 }}
+            transition={{ duration: 0.2, ease: "easeOut" }}
+          >
           <div className="flex items-center justify-between">
             <h3 className="text-base font-bold text-card-foreground">联系方式</h3>
             <button
@@ -101,23 +107,25 @@ export function ContactFAB() {
                 />
               </div>
             </div>
-          </div>
-        </div>
-      )}
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       {/* FAB Button */}
-      <button
+      <motion.button
         ref={buttonRef}
         onClick={() => setIsOpen((prev) => !prev)}
-        className="w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-primary text-primary-foreground shadow-lg hover:bg-primary/90 transition-all hover:scale-105 flex items-center justify-center"
+        className="w-12 h-12 sm:w-14 sm:h-14 rounded-full text-primary-foreground shadow-lg flex items-center justify-center bg-gradient-to-br from-primary to-accent"
         aria-label="联系方式"
+        whileHover={{ scale: 1.06, boxShadow: "0 18px 45px hsla(230,75%,55%,0.45)" }}
+        whileTap={{ scale: 0.96 }}
       >
         {isOpen ? (
           <X className="w-6 h-6" />
         ) : (
           <MessageCircle className="w-6 h-6" />
         )}
-      </button>
+      </motion.button>
     </div>
   );
 }
