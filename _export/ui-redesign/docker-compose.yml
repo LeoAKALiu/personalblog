@@ -1,0 +1,29 @@
+services:
+  web:
+    build: .
+    container_name: portfolio-web
+    restart: always
+    environment:
+      - NODE_ENV=production
+      - NODE_OPTIONS=--max-old-space-size=1280
+    deploy:
+      resources:
+        limits:
+          memory: 1536M
+    ports:
+      - "3000:3000"
+    expose:
+      - "3000"
+    networks:
+      nginx-proxy-manage_default:
+        ipv4_address: 172.18.0.10
+    healthcheck:
+      test: ["CMD", "wget", "-q", "-O", "/dev/null", "http://localhost:3000/api/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+networks:
+  nginx-proxy-manage_default:
+    external: true
