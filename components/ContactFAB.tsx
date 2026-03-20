@@ -1,4 +1,4 @@
- "use client";
+"use client";
 
 import { useState, useRef, useEffect } from "react";
 import { MessageCircle, X, Mail, Phone } from "lucide-react";
@@ -107,6 +107,7 @@ export function ContactFAB(): React.ReactElement {
                 />
               </div>
             </div>
+          </div>
           </motion.div>
         )}
       </AnimatePresence>

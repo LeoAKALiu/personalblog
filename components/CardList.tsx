@@ -111,7 +111,6 @@ export function CardList({
                 查看全文 <ExternalLink className="w-3 h-3" />
               </a>
             )}
-          </div>
         </motion.div>
       ))}
     </div>
